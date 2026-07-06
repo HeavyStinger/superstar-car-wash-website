@@ -243,11 +243,11 @@ section[id], footer[id] { scroll-margin-top: var(--header-h); }
 .hero {
 	position: relative; width: 100%; overflow: hidden; display: flex; flex-direction: column;
 	justify-content: center;
-	/* svh stays pinned to the viewport with browser chrome visible, so the
-	   hero doesn't resize as the address bar collapses/expands on scroll.
-	   vh is a fallback for browsers without svh support (Safari <15.4). */
-	min-height: 80vh;
-	min-height: 80svh;
+	/* Fixed px instead of any viewport unit (vh/svh) — some mobile
+	   browsers still recompute vh-based units as the address bar
+	   collapses/expands on scroll, resizing the hero. A hard pixel
+	   value never changes regardless of browser chrome. */
+	min-height: 640px;
 	background:
 		radial-gradient(ellipse 1200px 800px at 50% 0%, #ffffff 0%, rgba(255,255,255,0) 55%),
 		repeating-linear-gradient(0deg, rgba(23,25,28,.14) 0px, rgba(23,25,28,.14) 1.5px, transparent 1.5px, transparent 96px),
