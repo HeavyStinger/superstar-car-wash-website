@@ -209,30 +209,13 @@
 	requestAnimationFrame(measureOverlay);
 
 	/* ============================================================
-	   Quick booking modal
+	   Scroll-to-section buttons (hero CTAs -> booking form)
 	   ============================================================ */
-	var modalOverlay = document.getElementById("modal-overlay");
-	var modalFormView = document.getElementById("modal-form-view");
-	var modalBookedView = document.getElementById("modal-booked-view");
-
-	function openModal() {
-		modalFormView.hidden = false;
-		modalBookedView.hidden = true;
-		modalOverlay.hidden = false;
-	}
-	function closeModal() {
-		modalOverlay.hidden = true;
-	}
-	document.querySelectorAll("[data-open-modal]").forEach(function (btn) {
-		btn.addEventListener("click", openModal);
-	});
-	document.getElementById("modal-close").addEventListener("click", closeModal);
-	modalOverlay.addEventListener("click", function (e) {
-		if (e.target === modalOverlay) closeModal();
-	});
-	document.getElementById("q-submit").addEventListener("click", function () {
-		modalFormView.hidden = true;
-		modalBookedView.hidden = false;
+	document.querySelectorAll("[data-scroll-to]").forEach(function (btn) {
+		btn.addEventListener("click", function () {
+			var target = document.getElementById(btn.getAttribute("data-scroll-to"));
+			if (target) target.scrollIntoView({ behavior: "smooth" });
+		});
 	});
 
 	/* ============================================================

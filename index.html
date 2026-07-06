@@ -25,93 +25,15 @@
 			<a class="nav-link" href="lounge.html">Bar &amp; Lounge</a>
 			<a class="nav-link" href="about.html">About</a>
 			<a class="nav-link" href="contact.html">Contact</a>
+			<a class="ssw-cta nav-book-btn" href="contact.html">Book Now</a>
 		</nav>
 		<div class="header-actions">
-			<button class="ssw-cta header-cta" data-open-modal>Book Now</button>
+			<a class="ssw-cta header-cta" href="contact.html">Book Now</a>
 			<button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="main-nav">
 				<span></span><span></span><span></span>
 			</button>
 		</div>
 	</header>
-
-	<!-- ================= QUICK BOOKING MODAL ================= -->
-	<div class="modal-overlay" id="modal-overlay" hidden>
-		<div class="modal-card" id="modal-card">
-			<button class="modal-close" id="modal-close" aria-label="Close">&times;</button>
-
-			<div id="modal-form-view">
-				<div class="modal-title">Book Your Wash</div>
-				<div class="modal-subtitle">Super Star Car Wash &mdash; Belize City</div>
-				<div class="modal-fields">
-					<div class="field">
-						<label class="ssw-label" for="q-service">Service</label>
-						<select class="ssw-input" id="q-service">
-							<option value="basic">Basic Wash &mdash; $15</option>
-							<option value="deluxe">Deluxe Wash &mdash; $25</option>
-							<option value="detail">Full Detail &mdash; $60</option>
-						</select>
-					</div>
-					<div class="field-row">
-						<div class="field field-grow">
-							<label class="ssw-label" for="q-date">Date</label>
-							<input class="ssw-input" id="q-date" name="date" type="date" autocomplete="off">
-						</div>
-						<div class="field field-grow">
-							<label class="ssw-label" for="q-time">Time</label>
-							<input class="ssw-input" id="q-time" name="time" type="time" autocomplete="off">
-						</div>
-					</div>
-					<div class="field">
-						<label class="ssw-label" for="q-name">Name</label>
-						<input class="ssw-input" id="q-name" name="name" type="text" autocomplete="name" placeholder="Your name">
-					</div>
-					<div class="field">
-						<label class="ssw-label" for="q-phone">Phone</label>
-						<div class="field-row">
-							<select class="ssw-input phone-code" id="q-phone-code">
-								<option value="+501">+501 BZ</option>
-								<option value="+502">+502 GT</option>
-								<option value="+503">+503 SV</option>
-								<option value="+504">+504 HN</option>
-								<option value="+505">+505 NI</option>
-								<option value="+506">+506 CR</option>
-								<option value="+507">+507 PA</option>
-								<option value="+52">+52 MX</option>
-								<option value="+1">+1 US/CA</option>
-								<option value="+44">+44 UK</option>
-								<option value="+34">+34 ES</option>
-								<option value="+33">+33 FR</option>
-								<option value="+49">+49 DE</option>
-								<option value="+39">+39 IT</option>
-								<option value="+31">+31 NL</option>
-								<option value="+353">+353 IE</option>
-								<option value="+55">+55 BR</option>
-								<option value="+54">+54 AR</option>
-								<option value="+57">+57 CO</option>
-								<option value="+51">+51 PE</option>
-								<option value="+56">+56 CL</option>
-								<option value="+91">+91 IN</option>
-								<option value="+86">+86 CN</option>
-								<option value="+81">+81 JP</option>
-								<option value="+61">+61 AU</option>
-								<option value="+27">+27 ZA</option>
-							</select>
-							<input class="ssw-input field-grow" id="q-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel-national" placeholder="000-0000">
-						</div>
-					</div>
-					<button class="ssw-cta" id="q-submit" type="button" style="padding:15px;font-size:15px;margin-top:6px;">Book My Wash</button>
-				</div>
-			</div>
-
-			<div id="modal-booked-view" hidden>
-				<div class="modal-booked">
-					<div class="modal-booked-emoji">&#128663;&#128167;</div>
-					<div class="modal-booked-title">You're Booked!</div>
-					<div class="modal-booked-copy">We'll see you soon. A confirmation text is on its way.</div>
-				</div>
-			</div>
-		</div>
-	</div>
 
 	<main id="main-content">
 		<!-- ================= HERO ================= -->
@@ -125,14 +47,14 @@
 				<p class="eyebrow">Belize City's #1 Rated Car Wash</p>
 				<h1 class="h1">Best Car Wash in Belize City</h1>
 				<p class="hero-copy">Hand wash, foam detail, and tire shine that lasts. Book in 30 seconds. Kick back in the bar while your car is being cleaned.</p>
-				<button class="ssw-cta hero-btn" data-open-modal>Wash My Car <span class="arrow">&rarr;</span></button>
+				<button class="ssw-cta hero-btn" data-scroll-to="booking">Wash My Car <span class="arrow">&rarr;</span></button>
 				<div class="hero-stats">
 					<div class="stat"><div class="stat-value">4.9 <span class="star-gold">&#9733;</span></div><div class="stat-label">312 reviews</div></div>
 					<div class="stat"><div class="stat-value">15 min</div><div class="stat-label">avg. wash time</div></div>
 				</div>
 			</div>
 
-			<button class="ready-hint" data-open-modal type="button">
+			<button class="ready-hint" data-scroll-to="booking" type="button">
 				<span class="ready-arrow"></span>
 				<span class="ready-label">Ready to wash?</span>
 			</button>

@@ -184,7 +184,10 @@ section[id], footer[id] { scroll-margin-top: var(--header-h); }
 .nav-link.active::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--brand-blue); }
 
 .header-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
-.header-cta { padding: 10px 14px; font-size: 11.5px; white-space: nowrap; flex-shrink: 0; }
+/* Desktop-only "Book Now" — on mobile it lives inside the nav dropdown instead (.nav-book-btn). */
+.header-cta { display: none; padding: 10px 14px; font-size: 11.5px; white-space: nowrap; flex-shrink: 0; }
+
+.nav-book-btn { justify-content: center; margin: 16px 20px; }
 
 .nav-toggle {
 	display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 5px;
@@ -212,6 +215,8 @@ section[id], footer[id] { scroll-margin-top: var(--header-h); }
 	.nav-link.active { border-bottom-color: var(--brand-blue); padding-bottom: 4px; }
 	.nav-link.active::before { display: none; }
 	.nav-toggle { display: none; }
+	.nav-book-btn { display: none; }
+	.header-cta { display: inline-flex; }
 }
 
 /* Desktop only: header floats transparent over the hero until the
@@ -236,8 +241,13 @@ section[id], footer[id] { scroll-margin-top: var(--header-h); }
    beside the copy, matching the original design's split layout.
    ============================================================ */
 .hero {
-	position: relative; width: 100%; min-height: 80vh; overflow: hidden; display: flex; flex-direction: column;
+	position: relative; width: 100%; overflow: hidden; display: flex; flex-direction: column;
 	justify-content: center;
+	/* svh stays pinned to the viewport with browser chrome visible, so the
+	   hero doesn't resize as the address bar collapses/expands on scroll.
+	   vh is a fallback for browsers without svh support (Safari <15.4). */
+	min-height: 80vh;
+	min-height: 80svh;
 	background:
 		radial-gradient(ellipse 1200px 800px at 50% 0%, #ffffff 0%, rgba(255,255,255,0) 55%),
 		repeating-linear-gradient(0deg, rgba(23,25,28,.14) 0px, rgba(23,25,28,.14) 1.5px, transparent 1.5px, transparent 96px),
@@ -354,7 +364,13 @@ section[id], footer[id] { scroll-margin-top: var(--header-h); }
 	border-radius: var(--radius); box-shadow: 0 24px 60px -20px rgba(23,25,28,.18); padding: 24px 20px;
 	box-sizing: border-box; display: flex; flex-direction: column; z-index: 1;
 }
-.booking-body { flex: 1; }
+/* Fixed height so the card doesn't resize (and shift the page) as the
+   wizard moves between steps of very different content lengths. Sized
+   to the tallest "normal" step per breakpoint; the vehicle-picker step
+   (the one outlier, since its grid is 1 column on mobile) scrolls
+   internally instead of stretching the card. flex:none (rather than
+   flex:1) so the explicit height isn't overridden by a flex-basis:0%. */
+.booking-body { flex: none; height: 560px; overflow-y: auto; overscroll-behavior: contain; }
 .card-title { font-family: var(--font-display); font-weight: 800; font-size: 18px; text-transform: uppercase; color: var(--ink); margin: 0 0 22px; }
 .card-sub { font-family: var(--font-body); font-size: 13px; color: var(--muted); margin: -14px 0 20px; }
 
@@ -439,7 +455,10 @@ section[id], footer[id] { scroll-margin-top: var(--header-h); }
 .summary-row { display: flex; justify-content: space-between; font-family: var(--font-body); font-size: 13px; color: var(--slate); }
 .summary-total { font-family: var(--font-mono-ish); font-weight: 700; font-size: 15px; color: var(--ink); border-top: 1px solid rgba(23,25,28,.1); padding-top: 8px; margin-top: 2px; }
 
-.booking-footer { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; margin-top: auto; padding-top: 24px; border-top: 1px solid rgba(23,25,28,.08); gap: 14px; }
+/* min-height covers the tallest state (Back + price + Continue wrapping
+   to 2 lines on narrow widths) so the footer doesn't change height as
+   which of those pieces show/hide varies step to step. */
+.booking-footer { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; margin-top: auto; padding-top: 24px; border-top: 1px solid rgba(23,25,28,.08); gap: 14px; min-height: 137px; }
 .footer-spacer { flex: 1; }
 .footer-price { font-family: var(--font-mono-ish); font-weight: 700; font-size: 18px; color: var(--ink); font-variant-numeric: tabular-nums; }
 .footer-price small { font-size: 12px; font-weight: 600; color: var(--muted); }
@@ -454,6 +473,8 @@ section[id], footer[id] { scroll-margin-top: var(--header-h); }
 	.step-dot { width: 40px; height: 40px; font-size: 15px; }
 	.step-label { font-size: 11.5px; }
 	.booking-card { padding: 44px 48px; }
+	.booking-body { height: 460px; }
+	.booking-footer { min-height: 74px; }
 	.card-title { font-size: 22px; margin-bottom: 26px; }
 	.card-sub { margin: -18px 0 22px; }
 	.vehicle-grid, .wash-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
@@ -466,15 +487,16 @@ section[id], footer[id] { scroll-margin-top: var(--header-h); }
    ============================================================ */
 .feature-strip {
 	background: var(--surface); padding: 20px 16px; border-top: 1px solid rgba(23,25,28,.07);
-	border-bottom: 1px solid rgba(23,25,28,.07); display: flex; align-items: center; justify-content: center;
-	gap: 24px; flex-wrap: wrap;
+	border-bottom: 1px solid rgba(23,25,28,.07); display: flex; flex-direction: column; align-items: center;
+	justify-content: center; gap: 16px;
 }
-.feature-item { display: flex; align-items: center; gap: 10px; }
+.feature-item { display: flex; align-items: center; gap: 10px; width: 100%; justify-content: center; }
 .feature-item span { font-family: var(--font-mono-ish); font-weight: 600; font-size: 13px; color: var(--ink); white-space: nowrap; }
 .feature-divider { display: none; }
 
 @media (min-width: 700px) {
-	.feature-strip { padding: 26px 24px; gap: 36px; }
+	.feature-strip { flex-direction: row; flex-wrap: wrap; padding: 26px 24px; gap: 36px; }
+	.feature-item { width: auto; }
 	.feature-item span { font-size: 14px; }
 	.feature-divider { display: block; width: 1px; height: 22px; background: rgba(23,25,28,.14); flex-shrink: 0; }
 }
@@ -629,23 +651,3 @@ section[id], footer[id] { scroll-margin-top: var(--header-h); }
 	.footer-bottom { margin-top: 40px; }
 }
 
-/* ============================================================
-   QUICK BOOKING MODAL
-   ============================================================ */
-.modal-overlay { position: fixed; inset: 0; background: rgba(20,22,26,.55); display: flex; align-items: center; justify-content: center; z-index: 1000; overscroll-behavior: contain; }
-.modal-overlay[hidden] { display: none; }
-.modal-card { width: 440px; max-width: 94vw; max-height: 90vh; overflow-y: auto; background: var(--surface); border-radius: var(--radius); padding: 24px 20px; box-shadow: 0 30px 80px rgba(0,0,0,.35); position: relative; overscroll-behavior: contain; }
-.modal-close { position: absolute; top: 18px; right: 18px; width: 32px; height: 32px; border-radius: 50%; border: none; background: #eeece7; color: #44474d; font-size: 18px; cursor: pointer; line-height: 1; transition: background .15s ease, color .15s ease; }
-.modal-close:hover { background: var(--ink); color: #fff; }
-.modal-title { font-family: var(--font-display); font-weight: 800; font-size: 20px; text-transform: uppercase; color: var(--ink); margin-bottom: 4px; }
-.modal-subtitle { font-size: 14px; color: var(--muted); margin-bottom: 22px; font-family: var(--font-body); }
-.modal-fields { display: flex; flex-direction: column; gap: 16px; }
-.modal-booked { text-align: center; padding: 20px 0; }
-.modal-booked-emoji { font-size: 44px; margin-bottom: 14px; }
-.modal-booked-title { font-family: var(--font-display); font-weight: 800; font-size: 22px; text-transform: uppercase; color: var(--ink); margin-bottom: 8px; }
-.modal-booked-copy { font-size: 14px; color: var(--slate); line-height: 1.6; font-family: var(--font-body); }
-
-@media (min-width: 481px) {
-	.modal-card { padding: 32px; max-width: 92vw; }
-	.modal-title { font-size: 24px; }
-}
