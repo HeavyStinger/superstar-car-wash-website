@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+	<title>Super Star Car Wash — Best Car Wash in Belize City</title>
+	<meta name="description" content="Hand wash, foam detail, and tire shine that lasts. Book in 30 seconds. Kick back in the bar while your car is being cleaned.">
+	<meta name="theme-color" content="#2E8FDB">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800&family=Space+Grotesk:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+	<a class="skip-link" href="#main-content">Skip to main content</a>
+
+	<header class="site-header">
+		<div class="logo" translate="no">Super Star <span class="logo-accent">&#9733; CAR WASH</span></div>
+		<nav class="main-nav" id="main-nav">
+			<a class="nav-link active" href="index.html">Home</a>
+			<a class="nav-link" href="services.html">Services</a>
+			<a class="nav-link" href="pricing.html">Packages</a>
+			<a class="nav-link" href="gallery.html">Gallery</a>
+			<a class="nav-link" href="lounge.html">Bar &amp; Lounge</a>
+			<a class="nav-link" href="about.html">About</a>
+			<a class="nav-link" href="contact.html">Contact</a>
+		</nav>
+		<div class="header-actions">
+			<button class="ssw-cta header-cta" data-open-modal>Book Now</button>
+			<button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="main-nav">
+				<span></span><span></span><span></span>
+			</button>
+		</div>
+	</header>
+
+	<!-- ================= QUICK BOOKING MODAL ================= -->
+	<div class="modal-overlay" id="modal-overlay" hidden>
+		<div class="modal-card" id="modal-card">
+			<button class="modal-close" id="modal-close" aria-label="Close">&times;</button>
+
+			<div id="modal-form-view">
+				<div class="modal-title">Book Your Wash</div>
+				<div class="modal-subtitle">Super Star Car Wash &mdash; Belize City</div>
+				<div class="modal-fields">
+					<div class="field">
+						<label class="ssw-label" for="q-service">Service</label>
+						<select class="ssw-input" id="q-service">
+							<option value="basic">Basic Wash &mdash; $15</option>
+							<option value="deluxe">Deluxe Wash &mdash; $25</option>
+							<option value="detail">Full Detail &mdash; $60</option>
+						</select>
+					</div>
+					<div class="field-row">
+						<div class="field field-grow">
+							<label class="ssw-label" for="q-date">Date</label>
+							<input class="ssw-input" id="q-date" name="date" type="date" autocomplete="off">
+						</div>
+						<div class="field field-grow">
+							<label class="ssw-label" for="q-time">Time</label>
+							<input class="ssw-input" id="q-time" name="time" type="time" autocomplete="off">
+						</div>
+					</div>
+					<div class="field">
+						<label class="ssw-label" for="q-name">Name</label>
+						<input class="ssw-input" id="q-name" name="name" type="text" autocomplete="name" placeholder="Your name">
+					</div>
+					<div class="field">
+						<label class="ssw-label" for="q-phone">Phone</label>
+						<div class="field-row">
+							<select class="ssw-input phone-code" id="q-phone-code">
+								<option value="+501">+501 BZ</option>
+								<option value="+502">+502 GT</option>
+								<option value="+503">+503 SV</option>
+								<option value="+504">+504 HN</option>
+								<option value="+505">+505 NI</option>
+								<option value="+506">+506 CR</option>
+								<option value="+507">+507 PA</option>
+								<option value="+52">+52 MX</option>
+								<option value="+1">+1 US/CA</option>
+								<option value="+44">+44 UK</option>
+								<option value="+34">+34 ES</option>
+								<option value="+33">+33 FR</option>
+								<option value="+49">+49 DE</option>
+								<option value="+39">+39 IT</option>
+								<option value="+31">+31 NL</option>
+								<option value="+353">+353 IE</option>
+								<option value="+55">+55 BR</option>
+								<option value="+54">+54 AR</option>
+								<option value="+57">+57 CO</option>
+								<option value="+51">+51 PE</option>
+								<option value="+56">+56 CL</option>
+								<option value="+91">+91 IN</option>
+								<option value="+86">+86 CN</option>
+								<option value="+81">+81 JP</option>
+								<option value="+61">+61 AU</option>
+								<option value="+27">+27 ZA</option>
+							</select>
+							<input class="ssw-input field-grow" id="q-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel-national" placeholder="000-0000">
+						</div>
+					</div>
+					<button class="ssw-cta" id="q-submit" type="button" style="padding:15px;font-size:15px;margin-top:6px;">Book My Wash</button>
+				</div>
+			</div>
+
+			<div id="modal-booked-view" hidden>
+				<div class="modal-booked">
+					<div class="modal-booked-emoji">&#128663;&#128167;</div>
+					<div class="modal-booked-title">You're Booked!</div>
+					<div class="modal-booked-copy">We'll see you soon. A confirmation text is on its way.</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<main id="main-content">
+		<!-- ================= HERO ================= -->
+		<section class="hero" id="hero">
+			<img class="hero-car" src="assets/hero-car-2.png" width="1536" height="1024" fetchpriority="high" alt="Dodge Durango SRT covered in foam mid-wash, on a bright studio background">
+			<div class="hero-overlay" id="hero-overlay" aria-hidden="true"></div>
+			<div class="hero-gradient" id="hero-gradient" aria-hidden="true"></div>
+			<div class="bubble-field" id="hero-bubbles" aria-hidden="true"></div>
+
+			<div class="hero-info" id="hero-info">
+				<p class="eyebrow">Belize City's #1 Rated Car Wash</p>
+				<h1 class="h1">Best Car Wash in Belize City</h1>
+				<p class="hero-copy">Hand wash, foam detail, and tire shine that lasts. Book in 30 seconds. Kick back in the bar while your car is being cleaned.</p>
+				<button class="ssw-cta hero-btn" data-open-modal>Wash My Car <span class="arrow">&rarr;</span></button>
+				<div class="hero-stats">
+					<div class="stat"><div class="stat-value">4.9 <span class="star-gold">&#9733;</span></div><div class="stat-label">312 reviews</div></div>
+					<div class="stat"><div class="stat-value">15 min</div><div class="stat-label">avg. wash time</div></div>
+				</div>
+			</div>
+
+			<button class="ready-hint" data-open-modal type="button">
+				<span class="ready-arrow"></span>
+				<span class="ready-label">Ready to wash?</span>
+			</button>
+		</section>
+
+		<!-- ================= BOOKING WIZARD ================= -->
+		<section class="booking" id="booking">
+			<div class="bubble-field" id="section-bubbles-1" aria-hidden="true"></div>
+
+			<p class="eyebrow eyebrow-onblue">Book in Minutes</p>
+			<h2 class="h2 onblue">Get Your Shine On</h2>
+			<p class="lede onblue-muted">Four quick steps and your wash is locked in. Pick your ride, pick your grime, we handle the rest.</p>
+
+			<ol class="steps" id="steps">
+				<li class="step" data-step="1"><span class="step-dot"><span class="step-num">1</span><span class="step-check">&#10003;</span></span><span class="step-label">Contact</span></li>
+				<div class="step-line"></div>
+				<li class="step" data-step="2"><span class="step-dot"><span class="step-num">2</span><span class="step-check">&#10003;</span></span><span class="step-label">Schedule</span></li>
+				<div class="step-line"></div>
+				<li class="step" data-step="3"><span class="step-dot"><span class="step-num">3</span><span class="step-check">&#10003;</span></span><span class="step-label">Vehicle</span></li>
+				<div class="step-line"></div>
+				<li class="step" data-step="4"><span class="step-dot"><span class="step-num">4</span><span class="step-check">&#10003;</span></span><span class="step-label">Wash Type</span></li>
+			</ol>
+
+			<form class="booking-card" id="booking-form" novalidate>
+				<div class="booking-transition" id="booking-transition" hidden role="status" aria-live="polite">
+					<div class="transition-check" aria-hidden="true">&#10003;</div>
+					<div class="transition-msg" id="transition-msg"></div>
+				</div>
+
+				<div class="booking-body">
+
+					<!-- Step 1 : Contact -->
+					<div class="booking-panel" data-panel="1">
+						<h3 class="card-title">Your Contact Info</h3>
+						<div class="field">
+							<label class="ssw-label" for="bk-name">Full Name</label>
+							<input class="ssw-input" id="bk-name" name="name" type="text" autocomplete="name" placeholder="Juan Flores">
+							<div class="bk-error" id="err-name" hidden aria-live="polite">Enter your full name</div>
+						</div>
+						<div class="field">
+							<label class="ssw-label" for="bk-phone">Phone Number</label>
+							<div class="field-row">
+								<select class="ssw-input phone-code" id="bk-phone-code">
+									<option value="+501">+501 BZ</option>
+									<option value="+502">+502 GT</option>
+									<option value="+503">+503 SV</option>
+									<option value="+504">+504 HN</option>
+									<option value="+505">+505 NI</option>
+									<option value="+506">+506 CR</option>
+									<option value="+507">+507 PA</option>
+									<option value="+52">+52 MX</option>
+									<option value="+1">+1 US/CA</option>
+									<option value="+44">+44 UK</option>
+									<option value="+34">+34 ES</option>
+									<option value="+33">+33 FR</option>
+									<option value="+49">+49 DE</option>
+									<option value="+39">+39 IT</option>
+									<option value="+31">+31 NL</option>
+									<option value="+353">+353 IE</option>
+									<option value="+55">+55 BR</option>
+									<option value="+54">+54 AR</option>
+									<option value="+57">+57 CO</option>
+									<option value="+51">+51 PE</option>
+									<option value="+56">+56 CL</option>
+									<option value="+91">+91 IN</option>
+									<option value="+86">+86 CN</option>
+									<option value="+81">+81 JP</option>
+									<option value="+61">+61 AU</option>
+									<option value="+27">+27 ZA</option>
+								</select>
+								<input class="ssw-input field-grow" id="bk-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel-national" placeholder="000-0000">
+							</div>
+							<div class="bk-error" id="err-phone" hidden aria-live="polite">Enter a valid phone number</div>
+						</div>
+						<div class="field">
+							<label class="ssw-label" for="bk-email">Email</label>
+							<input class="ssw-input" id="bk-email" name="email" type="email" autocomplete="email" spellcheck="false" placeholder="you@email.com">
+							<div class="bk-error" id="err-email" hidden aria-live="polite">Enter a valid email address</div>
+						</div>
+					</div>
+
+					<!-- Step 2 : Schedule -->
+					<div class="booking-panel" data-panel="2">
+						<h3 class="card-title">Pick a Date &amp; Time</h3>
+						<p class="card-sub">Open Monday&ndash;Thursday, 7:30am&ndash;5:00pm.</p>
+						<div class="field-row">
+							<div class="field field-grow">
+								<label class="ssw-label" for="bk-date">Date</label>
+								<input class="ssw-input" id="bk-date" name="date" type="date" autocomplete="off">
+								<div class="bk-error" id="err-date" hidden aria-live="polite">Pick a date</div>
+							</div>
+							<div class="field field-grow">
+								<label class="ssw-label" for="bk-time">Time</label>
+								<input class="ssw-input" id="bk-time" name="time" type="time" autocomplete="off" min="07:30" max="16:40">
+								<div class="bk-error" id="err-time" hidden aria-live="polite">Pick a time</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Step 3 : Vehicle -->
+					<div class="booking-panel" data-panel="3">
+						<h3 class="card-title">Pick Your Wash</h3>
+						<p class="card-sub">Choose the size that matches your ride.</p>
+						<div class="vehicle-grid" id="vehicle-grid"></div>
+						<div class="bk-error" id="err-vehicle" hidden aria-live="polite">Pick a vehicle size to continue</div>
+					</div>
+
+					<!-- Step 4 : Wash Type -->
+					<div class="booking-panel" data-panel="4">
+						<h3 class="card-title">Inside, Outside, or Both?</h3>
+						<p class="card-sub" id="wash-sub">Pricing scales with your vehicle.</p>
+
+						<label class="checkbox-row" id="extra-dirty-row">
+							<input type="checkbox" id="bk-extra-dirty" class="visually-hidden">
+							<span class="checkbox-box"><span class="checkbox-tick">&#10003;</span></span>
+							<span class="checkbox-copy">
+								<span class="checkbox-title">Extra Dirty?</span>
+								<span class="checkbox-sub">Heavy mud or grime &mdash; priced by phone, we'll confirm before your appointment.</span>
+							</span>
+							<span class="checkbox-glyph" aria-hidden="true"></span>
+						</label>
+
+						<div class="wash-grid" id="wash-grid"></div>
+						<div class="bk-error" id="err-wash" hidden aria-live="polite">Pick a wash type to continue</div>
+
+						<label class="checkbox-row" id="tire-shine-row">
+							<input type="checkbox" id="bk-tire-shine" class="visually-hidden">
+							<span class="checkbox-box"><span class="checkbox-tick">&#10003;</span></span>
+							<span class="checkbox-copy">
+								<span class="checkbox-title">Add Tire Shine</span>
+								<span class="checkbox-sub">Glossy, streak-free finish &mdash; +$10 BZD</span>
+							</span>
+						</label>
+					</div>
+
+					<!-- Step 5 : Confirmation -->
+					<div class="booking-panel" data-panel="5">
+						<div class="confirm">
+							<div class="confirm-check">&#10003;</div>
+							<h3 class="card-title">You're Booked!</h3>
+							<p class="confirm-copy" id="confirm-copy" aria-live="polite"></p>
+
+							<div class="confirm-summary" id="confirm-price-summary" hidden>
+								<div class="summary-row"><span id="summary-line-1"></span><span id="summary-price-1"></span></div>
+								<div class="summary-row" id="summary-tire-row" hidden><span>Tire Shine</span><span>$10</span></div>
+								<div class="summary-row summary-total"><span>Total</span><span id="summary-total"></span></div>
+							</div>
+
+							<div class="confirm-summary confirm-call" id="confirm-call-summary" hidden>
+								<span id="confirm-call-line"></span>
+								<a class="ssw-cta-outline" id="confirm-call-link" href="tel:+5016100000">Call +501 610-0000</a>
+							</div>
+
+							<button class="ssw-cta" id="bk-reset" style="margin-top:12px;">Book Another Wash</button>
+						</div>
+					</div>
+
+				</div>
+
+				<div class="booking-footer" id="booking-footer">
+					<button type="button" class="btn-ghost" id="bk-back" hidden>Back</button>
+					<div class="footer-spacer"></div>
+					<div class="footer-price" id="footer-price" hidden></div>
+					<a class="ssw-cta-outline footer-call" id="footer-call" hidden href="tel:+5016100000">Call +501 610-0000</a>
+					<button type="button" class="ssw-cta" id="bk-continue">Continue</button>
+				</div>
+			</form>
+		</section>
+
+		<!-- ================= FEATURE STRIP ================= -->
+		<section class="feature-strip" id="why-choose-us">
+			<div class="feature-item">
+				<svg width="24" height="24" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="15" fill="none" stroke="#2E8FDB" stroke-width="3"/><line x1="20" y1="20" x2="20" y2="11" stroke="#2E8FDB" stroke-width="3" stroke-linecap="round"/><line x1="20" y1="20" x2="26" y2="22" stroke="#2E8FDB" stroke-width="3" stroke-linecap="round"/></svg>
+				<span>15&ndash;20 Minute Service</span>
+			</div>
+			<div class="feature-divider"></div>
+			<div class="feature-item">
+				<svg width="24" height="24" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="15" fill="none" stroke="#2E8FDB" stroke-width="3"/><polyline points="13,20 18,25 27,14" fill="none" stroke="#2E8FDB" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+				<span>Clean, consistent results</span>
+			</div>
+			<div class="feature-divider"></div>
+			<div class="feature-item">
+				<svg width="24" height="24" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 4 L24 16 L36 20 L24 24 L20 36 L16 24 L4 20 L16 16 Z" fill="#2E8FDB"/></svg>
+				<span>Professional finish</span>
+			</div>
+			<div class="feature-divider"></div>
+			<div class="feature-item">
+				<svg width="24" height="24" viewBox="0 0 40 40" aria-hidden="true"><polygon points="9,9 31,9 21.5,25 18.5,25" fill="#2E8FDB"/><line x1="20" y1="25" x2="20" y2="33" stroke="#2E8FDB" stroke-width="3" stroke-linecap="round"/><line x1="13" y1="34" x2="27" y2="34" stroke="#2E8FDB" stroke-width="3" stroke-linecap="round"/></svg>
+				<span>Lounge &amp; bar access</span>
+			</div>
+		</section>
+
+		<!-- ================= PRICING PREVIEW ================= -->
+		<section class="pricing" id="pricing">
+			<div class="bubble-field" id="section-bubbles-2" aria-hidden="true"></div>
+			<h2 class="h2 onblue">Quick Pricing Preview</h2>
+			<p class="lede onblue-muted">Outside Only / In and Out &mdash; BZD</p>
+			<div class="price-rows">
+				<div class="price-row"><span>Small Car</span><span>$15 / $30</span></div>
+				<div class="price-row"><span>Small SUV</span><span>$20 / $40</span></div>
+				<div class="price-row"><span>Large SUV</span><span>$25 / $50</span></div>
+			</div>
+			<a class="text-link onblue" href="#pricing">Full Pricing &rarr;</a>
+		</section>
+
+		<!-- ================= GALLERY PREVIEW ================= -->
+		<section class="gallery" id="gallery">
+			<h2 class="h2">Gallery Preview</h2>
+			<p class="lede muted">Drag the divider to compare before &amp; after</p>
+			<div class="gallery-grid" id="gallery-grid"></div>
+			<a class="text-link" href="#gallery">View Full Gallery &rarr;</a>
+		</section>
+
+		<!-- ================= TESTIMONIALS ================= -->
+		<section class="testimonials" id="testimonials">
+			<div class="bubble-field" id="section-bubbles-3" aria-hidden="true"></div>
+			<h2 class="h2 onblue">What Our Customers Say</h2>
+			<div class="marquee-mask">
+				<div class="marquee-track marquee-right" id="marquee-row-1"></div>
+			</div>
+			<div class="marquee-mask">
+				<div class="marquee-track marquee-left" id="marquee-row-2"></div>
+			</div>
+		</section>
+
+		<!-- ================= BAR & LOUNGE CTA ================= -->
+		<section class="lounge-cta" id="lounge">
+			<div class="lounge-glow" aria-hidden="true"></div>
+			<p class="eyebrow eyebrow-lounge">Bar &amp; Lounge</p>
+			<h2 class="h2 onblue">Relax While We Clean Your Car</h2>
+			<p class="lede onblue-muted">Grab a drink, kick back, and let us handle the shine. Your car's ready before your glass is empty.</p>
+			<a class="ssw-cta" href="#footer">Visit Our Lounge &rarr;</a>
+		</section>
+	</main>
+
+	<!-- ================= FOOTER ================= -->
+	<footer class="site-footer" id="footer">
+		<div class="footer-grid">
+			<div class="footer-col footer-brand">
+				<div class="logo logo-onDark" translate="no">Super Star <span class="logo-accent">&#9733; Car Wash</span></div>
+				<p>Premium hand washes and a lounge to relax in, right here in Belize City.</p>
+				<div class="footer-links">
+					<a class="ssw-footer-link" href="#footer">Privacy</a>
+					<a class="ssw-footer-link" href="#footer">Terms</a>
+					<a class="ssw-footer-link" href="#footer">Press</a>
+				</div>
+			</div>
+			<div class="footer-col">
+				<div class="footer-heading">Contact</div>
+				<a class="ssw-footer-link" href="tel:+5016100000">+501 610-0000</a>
+				<a class="ssw-footer-link" href="mailto:hello@superstarcarwash.bz">hello@superstarcarwash.bz</a>
+				<div class="footer-muted">Mile 2, Northern Highway, Belize City</div>
+			</div>
+			<div class="footer-col">
+				<div class="footer-heading">Follow Along</div>
+				<div class="social-pills">
+					<a class="ssw-social-pill" href="#footer">Instagram</a>
+					<a class="ssw-social-pill" href="#footer">Facebook</a>
+					<a class="ssw-social-pill" href="#footer">WhatsApp</a>
+				</div>
+				<div class="footer-muted footer-copyright">&copy; <span id="year"></span> Super Star Car Wash. All rights reserved.</div>
+			</div>
+		</div>
+		<div class="footer-bottom">
+			Powered by <a class="ssw-footer-link footer-powered" href="https://ctechintl.com" target="_blank" rel="noopener" translate="no">Ctech International</a>
+		</div>
+	</footer>
+
+	<script src="script.js"></script>
+</body>
+</html>
