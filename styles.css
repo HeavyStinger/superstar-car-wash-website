@@ -219,16 +219,19 @@ section[id], footer[id] { scroll-margin-top: var(--header-h); }
 	.header-cta { display: inline-flex; }
 }
 
-/* Desktop only: header floats transparent over the hero until the
-   page scrolls, then gains a solid backing (see .is-scrolled, toggled
-   in script.js on scroll). Lets the hero fill the full viewport height
-   behind the nav instead of being pushed down by header's own space. */
+/* Desktop only, and only on pages with a full-bleed hero (body.has-hero
+   — currently just index.html): header floats transparent over the
+   hero until the page scrolls, then gains a solid backing (see
+   .is-scrolled, toggled in script.js on scroll). Lets the hero fill
+   the full viewport height behind the nav instead of being pushed
+   down by header's own space. Pages without a hero keep the normal
+   sticky, always-solid header from the base rules above. */
 @media (min-width: 981px) {
-	.site-header {
+	body.has-hero .site-header {
 		position: fixed; top: 0; left: 0; right: 0; width: 100%;
 		background: transparent; backdrop-filter: none; border-bottom-color: transparent; box-shadow: none;
 	}
-	.site-header.is-scrolled {
+	body.has-hero .site-header.is-scrolled {
 		background: rgba(251,250,248,.92); backdrop-filter: blur(10px); border-bottom-color: var(--border);
 		box-shadow: 0 4px 24px rgba(23,25,28,.08);
 	}
@@ -319,14 +322,92 @@ section[id], footer[id] { scroll-margin-top: var(--header-h); }
 	.hero-stats { gap: 28px; margin-top: 36px; }
 	.stat-value { font-size: 24px; }
 	.ready-hint {
-		display: flex; position: absolute; right: 56px; bottom: 48px; z-index: 2; flex-direction: column;
-		align-items: flex-end; cursor: pointer; background: none; border: none; padding: 0;
+		display: flex;
+		position: absolute;
+		right: 56px;
+		bottom: 48px;
+		z-index: 2;
+		flex-direction: column;
+		align-items: flex-end;
 	}
 }
-.ready-arrow { display: inline-block; width: 64px; height: 26px; border-top: 2.5px solid #9a9da3; border-right: 2.5px solid #9a9da3; transform: rotate(45deg); transform-origin: bottom right; }
+
+.ready-arrow {
+	display: flex;
+	position: relative;
+}
+
+.ready-arrow > .vertical-line-wrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.ready-arrow > .vertical-line-wrapper > .vertical-line {
+	height: 200px;
+	width: 2px;
+	background-color: rgb(176, 185, 193);
+	display: block;
+}
+
+.ready-arrow > .vertical-line-wrapper > .circle {
+	height: 7px;
+	width: 7px;
+	margin-top: 5px;
+	border: 1px solid rgb(176, 185, 193);
+	border-radius: 50%;
+}
+
+.ready-arrow > .horizontal-line {
+	height: 2px;
+	width: 200px;
+	background-color: rgb(176, 185, 193);
+	display: block;
+	position: absolute;
+	right: calc(100% + 5px);
+	bottom: 2.5px;
+}
+
 .ready-label {
-	font-family: var(--font-mono-ish); font-weight: 600; font-size: 13px; letter-spacing: .08em;
-	text-transform: uppercase; color: var(--muted); margin-top: 14px;
+	margin: 7px 10px 0 0;
+	font-family: var(--font-mono-ish);
+	font-weight: 600;
+	font-size: 13px;
+	letter-spacing: .08em;
+	text-transform: uppercase;
+	color: rgb(150, 158, 165);
+	cursor: pointer;
+	background: none;
+	border: none;
+	padding: 0;
+	transition: color 0.2s ease;
+}
+
+.ready-label:hover {
+	color: var(--brand-blue);
+}
+
+/* ============================================================
+   PAGE INTRO
+   Top banner for secondary pages (e.g. Services) that don't have
+   a full-bleed hero photo — same blue-gradient language as the
+   booking/pricing/lounge sections.
+   ============================================================ */
+.page-intro {
+	position: relative; overflow: hidden; text-align: center;
+	background: radial-gradient(ellipse 900px 600px at 50% -10%, rgba(255,255,255,.16) 0%, rgba(255,255,255,0) 60%),
+		linear-gradient(180deg, var(--brand-blue) 0%, var(--brand-blue-dark) 100%);
+	padding: 56px 20px 48px; display: flex; flex-direction: column; align-items: center;
+}
+.page-intro .h1 { color: #fff; }
+.page-intro .lede { max-width: 560px; }
+.intro-promise { display: flex; flex-direction: column; align-items: center; gap: 14px; margin-top: 28px; }
+.intro-promise-item { display: flex; align-items: center; gap: 10px; color: #fff; font-family: var(--font-mono-ish); font-weight: 600; font-size: 13px; }
+.intro-promise-item svg { flex-shrink: 0; }
+
+@media (min-width: 700px) {
+	.page-intro { padding: 100px 24px 76px; }
+	.intro-promise { flex-direction: row; gap: 32px; margin-top: 36px; }
 }
 
 /* ============================================================

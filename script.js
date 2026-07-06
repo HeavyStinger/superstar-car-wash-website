@@ -189,6 +189,7 @@
 	renderBubbles("section-bubbles-1", sectionBubbles);
 	renderBubbles("section-bubbles-2", sectionBubbles);
 	renderBubbles("section-bubbles-3", sectionBubbles);
+	renderBubbles("intro-bubbles", sectionBubbles);
 
 	/* ============================================================
 	   Hero gradient overlay height (desktop only — matches
