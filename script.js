@@ -642,10 +642,26 @@
 	   ============================================================ */
 	(function gallery() {
 		var galleryItems = [
-			{ label: "Small Car — Full Detail" },
-			{ label: "SUV — Outside Only" },
-			{ label: "Large SUV — In and Out" },
-			{ label: "Truck — Extra Dirty" }
+			{
+				label: "Small Car — Full Detail",
+				before: "https://images.unsplash.com/photo-1770935883781-a2f5a52b69da?q=80&w=900&auto=format&fit=crop",
+				after: "https://images.unsplash.com/photo-1575844611398-2a68400b437c?q=80&w=900&auto=format&fit=crop"
+			},
+			{
+				label: "SUV — Outside Only",
+				before: "https://images.unsplash.com/photo-1586733840013-c19652be212d?q=80&w=900&auto=format&fit=crop",
+				after: "https://images.unsplash.com/photo-1607860115477-7b3700e055b6?q=80&w=900&auto=format&fit=crop"
+			},
+			{
+				label: "Large SUV — In and Out",
+				before: "https://images.unsplash.com/photo-1702235548944-87199c005acb?q=80&w=900&auto=format&fit=crop",
+				after: "https://images.unsplash.com/photo-1619431856706-ca2cc58258f6?q=80&w=900&auto=format&fit=crop"
+			},
+			{
+				label: "Truck — Extra Dirty",
+				before: "https://images.unsplash.com/photo-1636225328330-7fb7184ca3ac?q=80&w=900&auto=format&fit=crop",
+				after: "https://images.unsplash.com/photo-1550565076-b2371ea1a324?q=80&w=900&auto=format&fit=crop"
+			}
 		];
 		var grid = document.getElementById("gallery-grid");
 		if (!grid) return;
@@ -655,6 +671,8 @@
 			var frame = el("div", { class: "compare-frame" });
 			var after = el("div", { class: "compare-after" });
 			var before = el("div", { class: "compare-before" });
+			if (item.after) after.style.backgroundImage = "url('" + item.after + "')";
+			if (item.before) before.style.backgroundImage = "url('" + item.before + "')";
 			var beforeTag = el("div", { class: "compare-tag before" }, [document.createTextNode("Before")]);
 			var afterTag = el("div", { class: "compare-tag after" }, [document.createTextNode("After")]);
 			var divider = el("div", { class: "compare-divider", "aria-hidden": "true" });
