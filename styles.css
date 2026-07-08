@@ -9,6 +9,7 @@
 	--rating-gold: #F5B400;
 	--rating-gold-dark: #A6790A;
 	--error-red: #E5484D;
+	--whatsapp-green: #25D366;
 	--ink: #17191c;
 	--slate: #5a5e64;
 	--muted: #6b6f76;
@@ -96,6 +97,7 @@ section[id], footer[id] { scroll-margin-top: var(--header-h); }
 	transition: opacity .15s ease;
 }
 .text-link:hover { opacity: .7; }
+.text-link-icon { width: 13px; height: 13px; vertical-align: -2px; margin-left: 3px; }
 .text-link.onblue { color: #fff; border-color: #fff; }
 
 .ssw-label {
@@ -107,7 +109,13 @@ section[id], footer[id] { scroll-margin-top: var(--header-h); }
 	border: 1.5px solid var(--border); background: var(--surface); color: var(--ink); width: 100%;
 }
 .ssw-input:focus { outline: none; border-color: var(--brand-blue); }
-.ssw-input:focus-visible { outline: 2px solid var(--brand-blue); outline-offset: 1px; }
+/* Matches the documented Design System "Focus" input state exactly
+   (border #2E8FDB + box-shadow 0 0 0 3px rgba(46,143,219,.18)) — see
+   Design System.html. The ring is only shown for keyboard focus
+   (:focus-visible) per the "avoid focus ring on click" rule. It can
+   render fully now because .booking-body was given breathing-room
+   padding (see below) instead of clipping it. */
+.ssw-input:focus-visible { outline: none; border-color: var(--brand-blue); box-shadow: 0 0 0 3px rgba(46,143,219,.18); }
 .ssw-input.error { border-color: var(--error-red); }
 .bk-error { font-family: var(--font-body); font-size: 12.5px; color: var(--error-red); margin-top: 6px; }
 
@@ -124,7 +132,9 @@ section[id], footer[id] { scroll-margin-top: var(--header-h); }
 	display: inline-flex; align-items: center; gap: 8px; padding: 12px 18px; border-radius: var(--radius-btn);
 	border: 2px solid var(--brand-blue); color: var(--brand-blue); font-family: var(--font-mono-ish);
 	font-weight: 600; font-size: 13px; white-space: nowrap;
+	transition: background .18s ease, border-color .18s ease, color .18s ease;
 }
+.ssw-cta-outline:hover { background: var(--brand-blue); color: #fff; }
 .btn-ghost {
 	padding: 14px 22px; border-radius: var(--radius-btn); font-size: 13.5px; font-family: var(--font-mono-ish); font-weight: 600;
 	letter-spacing: .04em; text-transform: uppercase; border: 2px solid var(--ink); background: transparent;
@@ -132,7 +142,7 @@ section[id], footer[id] { scroll-margin-top: var(--header-h); }
 }
 .btn-ghost:disabled { opacity: .5; cursor: not-allowed; }
 .arrow { transition: transform .15s ease; }
-.ssw-cta:hover .arrow { transform: translateX(2px); }
+.ssw-cta:hover .arrow, .ssw-cta-outline:hover .arrow { transform: translateX(2px); }
 
 .field { margin-bottom: 18px; }
 .field-row { display: flex; flex-direction: column; gap: 8px; margin-bottom: 18px; }
@@ -178,7 +188,7 @@ section[id], footer[id] { scroll-margin-top: var(--header-h); }
 	max-height: 0; overflow: hidden; opacity: 0; transition: max-height .25s ease, opacity .2s ease;
 }
 .main-nav.is-open { max-height: 480px; opacity: 1; }
-.nav-link { font-family: var(--font-body); font-weight: 600; font-size: 15px; color: rgba(23,25,28,.6); letter-spacing: .01em; padding: 14px 20px; border-bottom: 1px solid var(--border); position: relative; }
+.nav-link { font-family: var(--font-body); font-weight: 600; font-size: 15px; color: rgba(23,25,28,.6); letter-spacing: .01em; padding: 14px 20px; border-bottom: 1px solid var(--border); position: relative; transition: color .15s ease, border-bottom-color .15s ease; }
 .nav-link:hover { color: var(--ink); }
 .nav-link.active { color: var(--ink); }
 .nav-link.active::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--brand-blue); }
@@ -191,7 +201,7 @@ section[id], footer[id] { scroll-margin-top: var(--header-h); }
 
 .nav-toggle {
 	display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 5px;
-	width: 40px; height: 40px; flex-shrink: 0; border: 1.5px solid var(--border); border-radius: var(--radius-btn);
+	width: 44px; height: 44px; flex-shrink: 0; border: 1.5px solid var(--border); border-radius: var(--radius-btn);
 	background: var(--surface); padding: 0;
 }
 .nav-toggle span { display: block; width: 18px; height: 2px; background: var(--ink); border-radius: 2px; transition: transform .2s ease, opacity .2s ease; }
@@ -212,6 +222,7 @@ section[id], footer[id] { scroll-margin-top: var(--header-h); }
 		position: static; max-height: none; opacity: 1; overflow: visible; background: none; border: none; box-shadow: none;
 	}
 	.nav-link { padding: 0; border-bottom: 2px solid transparent; }
+	.nav-link:not(.active):hover { border-bottom-color: rgba(46,143,219,.35); padding-bottom: 4px; }
 	.nav-link.active { border-bottom-color: var(--brand-blue); padding-bottom: 4px; }
 	.nav-link.active::before { display: none; }
 	.nav-toggle { display: none; }
@@ -411,6 +422,158 @@ section[id], footer[id] { scroll-margin-top: var(--header-h); }
 }
 
 /* ============================================================
+   WASH TYPES (services.html)
+   ============================================================ */
+.wash-types {
+	background: var(--surface); padding: 48px 20px; display: flex; flex-direction: column; align-items: center;
+}
+.type-grid { display: grid; grid-template-columns: 1fr; gap: 16px; width: 100%; max-width: 720px; margin-bottom: 32px; }
+.type-card {
+	border: 2px solid var(--border-2); border-radius: var(--radius); background: var(--surface);
+	padding: 24px 20px; text-align: center; display: flex; flex-direction: column; align-items: center;
+	transition: border-color .18s ease, box-shadow .18s ease, transform .15s ease;
+}
+.type-card:hover { border-color: var(--brand-blue); box-shadow: 0 14px 28px -16px rgba(23,25,28,.22); transform: translateY(-3px); }
+.type-icon { margin-bottom: 14px; transition: transform .18s ease; }
+.type-card:hover .type-icon { transform: scale(1.08); }
+.type-title { font-family: var(--font-mono-ish); font-weight: 700; font-size: 17px; color: var(--ink); margin: 0 0 8px; }
+.type-copy { font-family: var(--font-body); font-size: 13.5px; color: var(--muted); line-height: 1.6; margin: 0; }
+
+.size-note { text-align: center; max-width: 480px; padding-top: 24px; border-top: 1px solid var(--border-2); }
+.size-note-label {
+	display: block; font-family: var(--font-mono-ish); font-weight: 700; font-size: 12px; letter-spacing: .08em;
+	text-transform: uppercase; color: var(--brand-blue); margin-bottom: 10px;
+}
+.size-note p { font-family: var(--font-body); font-size: 13.5px; color: var(--muted); line-height: 1.6; margin: 0 0 12px; }
+
+@media (min-width: 700px) {
+	.wash-types { padding: 80px 24px; }
+	.type-grid { grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 40px; }
+	.type-card { padding: 32px 28px; }
+	.type-title { font-size: 19px; }
+}
+
+/* ============================================================
+   OUR PROCESS (services.html)
+   ============================================================ */
+.process {
+	position: relative; overflow: hidden;
+	background: radial-gradient(ellipse 900px 600px at 50% -10%, rgba(255,255,255,.16) 0%, rgba(255,255,255,0) 60%),
+		linear-gradient(180deg, var(--brand-blue) 0%, var(--brand-blue-dark) 100%);
+	padding: 48px 20px; display: flex; flex-direction: column; align-items: center;
+}
+.process-grid { position: relative; display: flex; flex-direction: column; gap: 28px; width: 100%; max-width: 780px; margin-top: 8px; }
+.process-step { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 10px; }
+.process-num {
+	width: 40px; height: 40px; border-radius: 50%; background: #fff; color: var(--brand-blue);
+	display: flex; align-items: center; justify-content: center; font-family: var(--font-mono-ish); font-weight: 700; font-size: 16px;
+	flex-shrink: 0;
+}
+.process-title { font-family: var(--font-mono-ish); font-weight: 700; font-size: 16px; color: #fff; margin: 0; }
+.process-copy { font-family: var(--font-body); font-size: 13.5px; color: rgba(255,255,255,.75); line-height: 1.6; margin: 0; max-width: 320px; }
+
+/* Light variant — used where a blue section would otherwise sit next to another blue section */
+.process-light { background: var(--surface); }
+.process-light .process-num { background: var(--brand-blue); color: #fff; }
+.process-light .process-title { color: var(--ink); }
+.process-light .process-copy { color: var(--muted); }
+
+@media (min-width: 700px) {
+	.process { padding: 80px 24px; }
+	.process-grid { flex-direction: row; align-items: flex-start; gap: 32px; margin-top: 16px; }
+	.process-step { flex: 1; }
+}
+
+/* ============================================================
+   PRICING TABLE (pricing.html)
+   ============================================================ */
+.price-table {
+	background: var(--surface); padding: 48px 20px; display: flex; flex-direction: column; align-items: center;
+}
+.price-cards { display: grid; grid-template-columns: 1fr; gap: 16px; width: 100%; max-width: 900px; margin-top: 8px; }
+.price-card {
+	border: 2px solid var(--border-2); border-radius: var(--radius); background: var(--surface);
+	padding: 22px 20px; text-align: center;
+	transition: border-color .18s ease, box-shadow .18s ease, transform .15s ease;
+}
+.price-card:hover {
+	border-color: var(--brand-blue); box-shadow: 0 14px 28px -16px rgba(23,25,28,.22); transform: translateY(-3px);
+}
+.price-card-title { font-family: var(--font-mono-ish); font-weight: 700; font-size: 16px; color: var(--ink); margin: 0 0 4px; }
+.price-card-sub { font-family: var(--font-body); font-size: 12px; color: var(--muted); margin: 0 0 16px; }
+.price-card-rows { display: flex; flex-direction: column; gap: 8px; }
+.price-card-row {
+	display: flex; align-items: center; justify-content: space-between; font-family: var(--font-mono-ish);
+	font-size: 13.5px; color: var(--ink); background: rgba(46,143,219,.06); border-radius: var(--radius); padding: 10px 14px;
+	transition: background .18s ease;
+}
+.price-card-row span:first-child { color: var(--slate); font-weight: 500; }
+.price-card-row span:last-child { font-weight: 700; transition: color .18s ease; }
+.price-card:hover .price-card-row { background: rgba(46,143,219,.12); }
+.price-card:hover .price-card-row span:last-child { color: var(--brand-blue); }
+.price-card-contact .price-card-row { justify-content: center; color: var(--muted); font-weight: 600; }
+.price-card-contact .text-link { margin-top: 14px; display: inline-block; }
+
+/* Tire Shine card: a diagonal shine sweep across the card — themed after
+   the product itself. Occasional (long pause between sweeps), not continuous. */
+.price-card-shine { position: relative; overflow: hidden; }
+.price-card-sweep {
+	position: absolute; top: 0; left: -60%; width: 45%; height: 100%; z-index: 1;
+	background: linear-gradient(120deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.65) 50%, rgba(255,255,255,0) 100%);
+	transform: skewX(-20deg); animation: priceSweep 6s ease-in-out infinite;
+}
+@keyframes priceSweep {
+	0%, 70% { left: -60%; }
+	88% { left: 130%; }
+	100% { left: 130%; }
+}
+
+.price-notes { list-style: none; padding: 0; margin: 24px 0 0; text-align: center; max-width: 480px; }
+.price-notes li { font-family: var(--font-body); font-size: 12.5px; color: var(--muted); line-height: 1.7; }
+
+@media (min-width: 700px) {
+	.price-table { padding: 80px 24px; }
+	.price-cards { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+	/* 5 cards in a 2-column grid leaves the last card alone in its own
+	   row, stranded on the left with an empty gap beside it — span it
+	   full-width instead so it reads as a deliberate closing row. */
+	.price-card-contact { grid-column: 1 / -1; }
+}
+@media (min-width: 1024px) {
+	.price-cards { grid-template-columns: repeat(5, 1fr); }
+	.price-card-contact { grid-column: auto; }
+}
+
+/* ============================================================
+   CTA BAND (generic dark call-to-action banner)
+   ============================================================ */
+.cta-band {
+	position: relative; overflow: hidden; background: var(--ink); padding: 64px 20px;
+	display: flex; flex-direction: column; align-items: center; text-align: center;
+}
+.cta-band .h2, .cta-band .lede, .cta-band .ssw-cta, .cta-band .ssw-cta-outline { position: relative; }
+.cta-band .h2 { font-size: 26px; margin-bottom: 16px; max-width: 600px; }
+.cta-band .lede { color: rgba(255,255,255,.75); margin-bottom: 28px; max-width: 460px; }
+
+/* Pricing page CTA: blue-gradient + bubbles (matches the blue-section
+   design system) instead of the Home page's dark Lounge CTA treatment,
+   so the two pages' closing bands don't look identical. */
+.cta-band-price {
+	background: radial-gradient(ellipse 900px 500px at 50% 0%, rgba(255,255,255,.16) 0%, rgba(255,255,255,0) 60%),
+		linear-gradient(180deg, var(--brand-blue) 0%, var(--brand-blue-dark) 100%);
+}
+.cta-band-price-btn {
+	border-color: #fff; color: #fff;
+}
+.cta-band-price-btn:hover { background: #fff; color: var(--brand-blue-dark); }
+
+@media (min-width: 768px) {
+	.cta-band { padding: 110px 24px; }
+	.cta-band .h2 { font-size: 38px; }
+	.cta-band .lede { margin-bottom: 32px; }
+}
+
+/* ============================================================
    BOOKING WIZARD
    ============================================================ */
 .booking {
@@ -451,7 +614,17 @@ section[id], footer[id] { scroll-margin-top: var(--header-h); }
    (the one outlier, since its grid is 1 column on mobile) scrolls
    internally instead of stretching the card. flex:none (rather than
    flex:1) so the explicit height isn't overridden by a flex-basis:0%. */
-.booking-body { flex: none; height: 560px; overflow-y: auto; overscroll-behavior: contain; }
+/* padding + matching negative margin: gives focused inputs' box-shadow
+   ring room to render before the scroll-clip edge, without changing
+   the visible content width/position (overflow-y: auto computes
+   overflow-x as clipping too per spec — inputs are width:100% and
+   were flush against that clip edge with zero buffer).
+   No overscroll-behavior: contain — most steps' content is shorter
+   than the fixed height, so there's nothing to internally scroll, but
+   "contain" still swallows the wheel/trackpad gesture instead of
+   letting it bubble up to scroll the page, which made the page feel
+   stuck whenever the cursor was anywhere over the form. */
+.booking-body { flex: none; height: 560px; overflow-y: auto; padding: 0 4px; margin: 0 -4px; }
 .card-title { font-family: var(--font-display); font-weight: 800; font-size: 18px; text-transform: uppercase; color: var(--ink); margin: 0 0 22px; }
 .card-sub { font-family: var(--font-body); font-size: 13px; color: var(--muted); margin: -14px 0 20px; }
 
@@ -527,7 +700,7 @@ section[id], footer[id] { scroll-margin-top: var(--header-h); }
 	animation: bkCheckIn .45s cubic-bezier(.34,1.56,.64,1);
 }
 .confirm .card-title { margin: 0; font-size: 22px; }
-.confirm-copy { font-family: var(--font-body); color: var(--slate); font-size: 15px; max-width: 380px; line-height: 1.6; margin: 0; }
+.confirm-copy { font-family: var(--font-body); color: var(--slate); font-size: 15px; max-width: 380px; line-height: 1.6; margin: 0; overflow-wrap: break-word; }
 .confirm-summary {
 	background: #f2f0eb; border-radius: var(--radius); padding: 18px 24px; width: 100%; max-width: 320px;
 	display: flex; flex-direction: column; gap: 8px; margin-top: 8px;
@@ -595,7 +768,9 @@ section[id], footer[id] { scroll-margin-top: var(--header-h); }
 	display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,.1);
 	border: 1px solid rgba(255,255,255,.25); border-radius: var(--radius); padding: 16px 20px; color: #fff;
 	font-family: var(--font-mono-ish); font-variant-numeric: tabular-nums;
+	transition: background .18s ease, border-color .18s ease, transform .15s ease;
 }
+.price-row:hover { background: rgba(255,255,255,.18); border-color: rgba(255,255,255,.45); transform: translateY(-2px); }
 .price-row span:first-child { font-weight: 600; font-size: 15px; }
 .price-row span:last-child { font-weight: 700; font-size: 15px; }
 
@@ -612,7 +787,11 @@ section[id], footer[id] { scroll-margin-top: var(--header-h); }
 .gallery { background: var(--surface); padding: 56px 16px; display: flex; flex-direction: column; align-items: center; }
 .gallery-grid { display: grid; grid-template-columns: 1fr; gap: 20px; max-width: 880px; width: 100%; margin-bottom: 32px; }
 
-.compare { border-radius: var(--radius); overflow: hidden; box-shadow: 0 10px 30px -16px rgba(23,25,28,.2); background: #fff; }
+.compare {
+	border-radius: var(--radius); overflow: hidden; box-shadow: 0 10px 30px -16px rgba(23,25,28,.2); background: #fff;
+	transition: box-shadow .2s ease, transform .2s ease;
+}
+.compare:hover { box-shadow: 0 18px 40px -18px rgba(23,25,28,.3); transform: translateY(-3px); }
 .compare-frame { position: relative; height: 220px; overflow: hidden; cursor: ew-resize; user-select: none; }
 .compare-after, .compare-before {
 	position: absolute; inset: 0; background-repeat: no-repeat; background-size: cover;
@@ -640,6 +819,43 @@ section[id], footer[id] { scroll-margin-top: var(--header-h); }
 }
 
 /* ============================================================
+   EXTERIOR RESULTS (gallery.html)
+   ============================================================ */
+.result-section {
+	position: relative; overflow: hidden;
+	background: radial-gradient(ellipse 900px 600px at 50% -10%, rgba(255,255,255,.16) 0%, rgba(255,255,255,0) 60%),
+		linear-gradient(180deg, var(--brand-blue) 0%, var(--brand-blue-dark) 100%);
+	padding: 48px 20px; display: flex; flex-direction: column; align-items: center;
+}
+.result-grid { position: relative; display: grid; grid-template-columns: 1fr; gap: 16px; width: 100%; max-width: 640px; margin-top: 8px; }
+.result-card {
+	background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.25); border-radius: var(--radius);
+	padding: 24px 20px; text-align: center; color: #fff;
+	transition: background .18s ease, border-color .18s ease, transform .15s ease;
+}
+.result-card:hover { background: rgba(255,255,255,.18); border-color: rgba(255,255,255,.45); transform: translateY(-3px); }
+.result-icon { margin-bottom: 14px; display: flex; justify-content: center; }
+.result-title { font-family: var(--font-mono-ish); font-weight: 700; font-size: 16px; color: #fff; margin: 0 0 8px; }
+.result-copy { font-family: var(--font-body); font-size: 13.5px; color: rgba(255,255,255,.75); line-height: 1.6; margin: 0; }
+
+@media (min-width: 700px) {
+	.result-section { padding: 80px 24px; }
+	.result-grid { grid-template-columns: 1fr 1fr; gap: 20px; }
+	.result-card { padding: 32px 28px; }
+}
+
+/* ============================================================
+   VEHICLE SHOWCASE (gallery.html)
+   ============================================================ */
+.showcase { background: var(--surface); padding: 48px 20px; display: flex; flex-direction: column; align-items: center; }
+.showcase-grid { display: grid; grid-template-columns: 1fr; gap: 16px; width: 100%; max-width: 780px; margin-top: 8px; }
+
+@media (min-width: 700px) {
+	.showcase { padding: 80px 24px; }
+	.showcase-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+}
+
+/* ============================================================
    TESTIMONIALS
    ============================================================ */
 .testimonials {
@@ -655,10 +871,17 @@ section[id], footer[id] { scroll-margin-top: var(--header-h); }
 .marquee-track { display: flex; gap: 20px; width: max-content; }
 .marquee-right { animation: marqueeRight 34s linear infinite; }
 .marquee-left { animation: marqueeLeft 38s linear infinite; }
+/* Pause the auto-scroll so a reader can linger on a card without it drifting away. */
+.marquee-mask:hover .marquee-track { animation-play-state: paused; }
 @keyframes marqueeLeft { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 @keyframes marqueeRight { from { transform: translateX(-50%); } to { transform: translateX(0); } }
 
-.review-card { position: relative; flex: 0 0 260px; border-radius: var(--radius); padding: 20px 18px 16px; display: flex; flex-direction: column; gap: 10px; overflow: visible; background: #fff; border: 1px solid rgba(23,25,28,.06); box-shadow: 0 6px 18px rgba(23,25,28,.12); }
+.review-card {
+	position: relative; flex: 0 0 260px; border-radius: var(--radius); padding: 20px 18px 16px; display: flex; flex-direction: column; gap: 10px;
+	overflow: visible; background: #fff; border: 1px solid rgba(23,25,28,.06); box-shadow: 0 6px 18px rgba(23,25,28,.12);
+	transition: box-shadow .18s ease, transform .18s ease;
+}
+.review-card:hover { box-shadow: 0 12px 28px -8px rgba(23,25,28,.2); transform: translateY(-3px); }
 .review-stars { position: relative; color: var(--rating-gold); font-size: 18px; letter-spacing: 3px; }
 .review-quote { position: relative; font-family: var(--font-body); font-weight: 500; font-size: 14.5px; color: var(--ink); line-height: 1.5; margin: 0; }
 .review-name { position: relative; font-family: var(--font-mono-ish); font-weight: 700; font-size: 14px; color: var(--ink); }
@@ -700,6 +923,30 @@ section[id], footer[id] { scroll-margin-top: var(--header-h); }
 }
 
 /* ============================================================
+   LOUNGE GALLERY (lounge.html — placeholder photo panels)
+   ============================================================ */
+.lounge-gallery { background: var(--surface); padding: 48px 20px; display: flex; flex-direction: column; align-items: center; }
+.lounge-photos { display: grid; grid-template-columns: 1fr; gap: 16px; width: 100%; max-width: 880px; margin-top: 8px; }
+.lounge-photo {
+	position: relative; border-radius: var(--radius); overflow: hidden; height: 160px;
+	background-image: repeating-linear-gradient(135deg, #cfe3f5 0px, #cfe3f5 12px, #ddeefa 12px, #ddeefa 24px);
+	box-shadow: 0 10px 30px -16px rgba(23,25,28,.2);
+	display: flex; align-items: flex-end;
+	transition: box-shadow .2s ease, transform .2s ease;
+}
+.lounge-photo:hover { transform: translateY(-3px); box-shadow: 0 18px 40px -18px rgba(23,25,28,.3); }
+.lounge-photo-caption {
+	background: rgba(23,25,28,.6); color: #fff; font-family: var(--font-mono-ish); font-weight: 600; font-size: 12px;
+	letter-spacing: .04em; text-transform: uppercase; padding: 8px 14px; margin: 12px; border-radius: var(--radius);
+}
+
+@media (min-width: 700px) {
+	.lounge-gallery { padding: 80px 24px; }
+	.lounge-photos { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+	.lounge-photo { height: 200px; }
+}
+
+/* ============================================================
    FOOTER
    ============================================================ */
 .site-footer { background: var(--ink); padding: 48px 20px calc(32px + env(safe-area-inset-bottom)); border-top: 1px solid rgba(255,255,255,.1); }
@@ -730,5 +977,175 @@ section[id], footer[id] { scroll-margin-top: var(--header-h); }
 	.site-footer { padding: 72px 24px calc(32px + env(safe-area-inset-bottom)); }
 	.footer-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 56px; }
 	.footer-bottom { margin-top: 40px; }
+}
+
+/* ============================================================
+   BUSINESS HOURS (contact.html)
+   ============================================================ */
+.hours-rows { display: flex; flex-direction: column; gap: 10px; width: 100%; max-width: 420px; margin-top: 8px; }
+.hours-row {
+	display: flex; align-items: center; justify-content: space-between; gap: 16px;
+	background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.25); border-radius: var(--radius);
+	padding: 14px 20px; color: #fff; font-family: var(--font-mono-ish); transition: background .18s ease, border-color .18s ease;
+}
+.hours-row:hover { background: rgba(255,255,255,.18); border-color: rgba(255,255,255,.45); }
+.hours-row span:first-child { font-weight: 600; font-size: 14px; }
+.hours-row span:last-child { font-weight: 700; font-size: 14px; }
+.hours-row.is-closed span:last-child { color: rgba(255,255,255,.55); }
+
+@media (min-width: 700px) {
+	.hours-rows { gap: 12px; }
+	.hours-row { padding: 16px 24px; }
+	.hours-row span:first-child, .hours-row span:last-child { font-size: 15px; }
+}
+
+/* ============================================================
+   CONTACT + LOCATION GRID (contact.html)
+   Source order (mobile-natural): Form, then the Location/Methods
+   sidebar — so mobile stacks Hero -> Form -> Location -> Methods.
+   Desktop overrides grid placement so the sidebar sits on the left
+   and the form on the right, independent of source order. Both
+   halves share the same light background (see .booking--plain) so
+   the whole grid reads as one section, not two boxes glued together.
+   ============================================================ */
+.contact-grid { display: flex; flex-direction: column; background: var(--surface); }
+/* gap (not per-child margins) drives all spacing in this column, so
+   every child — heading, map, the icon row, the button — is evenly
+   and consistently spaced regardless of what order they're in. */
+.contact-side {
+	background: var(--surface); padding: 0 20px 48px; display: flex; flex-direction: column; align-items: center; gap: 28px;
+}
+.contact-side-heading { margin: 0; }
+
+@media (min-width: 1100px) {
+	.contact-grid { display: grid; grid-template-columns: 1fr 1fr; align-items: center; }
+	.contact-grid .booking { grid-column: 2; grid-row: 1; }
+	.contact-side { grid-column: 1; grid-row: 1; padding: 40px; gap: 32px; }
+}
+
+/* Contact page's form: sits on the same light background as its
+   sidebar instead of the blue treatment Home's booking section uses,
+   so the two halves of the grid read as one continuous section. */
+.booking--plain { background: none; padding: 0 20px 48px; }
+.booking--plain .step-dot { background: var(--surface); color: var(--muted); border: 2px solid var(--border-2); }
+.booking--plain .step.is-current .step-dot, .booking--plain .step.is-done .step-dot { background: var(--brand-blue); color: #fff; border-color: var(--brand-blue); }
+.booking--plain .step-line { background: var(--border-2); }
+.booking--plain .step-line.is-done { background: var(--brand-blue); }
+.booking--plain .step-label { color: var(--muted); }
+.booking--plain .step.is-current .step-label, .booking--plain .step.is-done .step-label { color: var(--ink); }
+
+@media (min-width: 1100px) {
+	.booking--plain { padding: 40px; }
+}
+
+/* ============================================================
+   LOCATION (contact.html — real Google Maps embed, with the Get
+   Directions button overlaid as a floating pill in its corner,
+   matching the convention of Google Maps' own native UI)
+   ============================================================ */
+.map-wrap {
+	position: relative; width: 100%; max-width: 560px; height: 280px; border-radius: var(--radius); overflow: hidden;
+	box-shadow: 0 10px 30px -16px rgba(23,25,28,.2);
+}
+.map-embed { display: block; width: 100%; height: 100%; border: 0; }
+
+.map-directions {
+	position: absolute; bottom: 14px; right: 14px; z-index: 2;
+	display: inline-flex; align-items: center; gap: 8px;
+	background: #fff; color: var(--ink); font-family: var(--font-mono-ish); font-weight: 700;
+	font-size: 12.5px; letter-spacing: .02em; text-transform: uppercase;
+	padding: 11px 18px; border-radius: var(--radius-pill); box-shadow: 0 4px 14px rgba(23,25,28,.28);
+	transition: background .18s ease, color .18s ease, box-shadow .18s ease, transform .15s ease;
+}
+.map-directions:hover { background: var(--brand-blue); color: #fff; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(23,25,28,.32); }
+.map-directions .arrow { transition: transform .15s ease; }
+.map-directions:hover .arrow { transform: translateX(2px); }
+
+@media (min-width: 700px) {
+	.map-wrap { height: 340px; }
+}
+@media (min-width: 1100px) {
+	.map-wrap { height: 400px; }
+}
+
+/* ============================================================
+   CONTACT METHODS (contact.html)
+   Mobile (<1100px): bordered card list, one per row, under the map.
+   Desktop (1100px+): collapses into a single plain icon row — no
+   card chrome, no visible label, muted by default, icon recolors to
+   its brand color on hover.
+   ============================================================ */
+.contact-methods { display: flex; flex-direction: column; gap: 10px; width: 100%; max-width: 480px; }
+.contact-method {
+	display: flex; align-items: center; gap: 14px; padding: 12px 16px;
+	border: 1.5px solid var(--border-2); border-radius: var(--radius); background: #fff;
+	transition: border-color .18s ease, transform .15s ease, box-shadow .18s ease;
+}
+.contact-method:hover { transform: translateY(-2px); box-shadow: 0 10px 24px -14px rgba(23,25,28,.25); }
+.contact-method-icon {
+	width: 38px; height: 38px; border-radius: 50%; flex-shrink: 0;
+	display: flex; align-items: center; justify-content: center;
+	background: rgba(46,143,219,.1); color: var(--brand-blue);
+	transition: background .18s ease, color .18s ease;
+}
+.contact-method-icon svg { width: 18px; height: 18px; }
+.contact-method-label { display: block; font-family: var(--font-mono-ish); font-weight: 700; font-size: 13.5px; color: var(--ink); }
+.contact-method-value { display: block; font-family: var(--font-body); font-size: 12.5px; color: var(--muted); margin-top: 1px; }
+
+.contact-method--phone:hover { border-color: var(--brand-blue-dark); }
+.contact-method--phone:hover .contact-method-icon { background: var(--brand-blue-dark); color: #fff; }
+.contact-method--whatsapp:hover { border-color: var(--whatsapp-green); }
+.contact-method--whatsapp:hover .contact-method-icon { background: var(--whatsapp-green); color: #fff; }
+.contact-method--email:hover { border-color: var(--rating-gold); }
+.contact-method--email:hover .contact-method-icon { background: var(--rating-gold); color: #fff; }
+.contact-method--location:hover { border-color: var(--error-red); }
+.contact-method--location:hover .contact-method-icon { background: var(--error-red); color: #fff; }
+
+@media (min-width: 1100px) {
+	.contact-methods { flex-direction: row; justify-content: center; width: 100%; max-width: 560px; gap: 26px; }
+	.contact-method { border: none; background: none; padding: 0; }
+	.contact-method:hover { transform: none; box-shadow: none; }
+	.contact-method-icon { width: 24px; height: 24px; background: none; color: var(--slate); transition: color .2s ease; }
+	.contact-method-icon svg { width: 24px; height: 24px; }
+	.contact-method-text { display: none; }
+
+	.contact-method--phone:hover .contact-method-icon { background: none; color: var(--brand-blue-dark); }
+	.contact-method--whatsapp:hover .contact-method-icon { background: none; color: var(--whatsapp-green); }
+	.contact-method--email:hover .contact-method-icon { background: none; color: var(--rating-gold); }
+	.contact-method--location:hover .contact-method-icon { background: none; color: var(--error-red); }
+}
+
+/* ============================================================
+   FAQ (contact.html — animated disclosure, no native <details>
+   so the open/close transition can be smooth instead of an
+   instant page-jarring resize)
+   ============================================================ */
+.faq-list { display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 720px; margin-top: 8px; }
+.faq-item {
+	border: 2px solid var(--border-2); border-radius: var(--radius); background: var(--surface);
+	padding: 0 20px; transition: border-color .18s ease;
+}
+.faq-item.is-open { border-color: var(--brand-blue); }
+.faq-question {
+	width: 100%; border: none; background: none; margin: 0; text-align: left;
+	font-family: var(--font-mono-ish); font-weight: 700; font-size: 15px; color: var(--ink);
+	padding: 18px 0; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 16px;
+	transition: color .18s ease;
+}
+.faq-question:hover { color: var(--brand-blue); }
+/* Explicit size is required — an <svg> with no width/height and no
+   intrinsic size falls back to the UA default replaced-element size
+   (300x150), which is why this rendered huge/broken before. */
+.faq-chevron { width: 20px; height: 20px; flex-shrink: 0; color: var(--brand-blue); transition: transform .25s ease; }
+.faq-item.is-open .faq-chevron { transform: rotate(180deg); }
+.faq-answer-wrap {
+	display: grid; grid-template-rows: 0fr; transition: grid-template-rows .3s ease;
+}
+.faq-item.is-open .faq-answer-wrap { grid-template-rows: 1fr; }
+.faq-answer-inner { overflow: hidden; }
+.faq-answer { font-family: var(--font-body); font-size: 13.5px; color: var(--muted); line-height: 1.6; margin: 0 0 18px; }
+
+@media (min-width: 700px) {
+	.faq-question { font-size: 16px; }
 }
 

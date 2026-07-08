@@ -6,6 +6,48 @@
 	<title>Super Star Car Wash — Best Car Wash in Belize City</title>
 	<meta name="description" content="Hand wash, foam detail, and tire shine that lasts. Book in 30 seconds. Kick back in the bar while your car is being cleaned.">
 	<meta name="theme-color" content="#2E8FDB">
+	<meta name="robots" content="index, follow">
+	<link rel="canonical" href="https://heavystinger.github.io/superstar-car-wash-website/">
+
+	<meta property="og:type" content="website">
+	<meta property="og:site_name" content="Super Star Car Wash">
+	<meta property="og:locale" content="en_US">
+	<meta property="og:title" content="Super Star Car Wash — Best Car Wash in Belize City">
+	<meta property="og:description" content="Hand wash, foam detail, and tire shine that lasts. Book in 30 seconds. Kick back in the bar while your car is being cleaned.">
+	<meta property="og:url" content="https://heavystinger.github.io/superstar-car-wash-website/">
+	<meta property="og:image" content="https://heavystinger.github.io/superstar-car-wash-website/assets/hero-car-2.png">
+	<meta property="og:image:width" content="1536">
+	<meta property="og:image:height" content="1024">
+
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:title" content="Super Star Car Wash — Best Car Wash in Belize City">
+	<meta name="twitter:description" content="Hand wash, foam detail, and tire shine that lasts. Book in 30 seconds. Kick back in the bar while your car is being cleaned.">
+	<meta name="twitter:image" content="https://heavystinger.github.io/superstar-car-wash-website/assets/hero-car-2.png">
+
+	<script type="application/ld+json">
+	{
+		"@context": "https://schema.org",
+		"@type": "AutomotiveBusiness",
+		"name": "Super Star Car Wash",
+		"image": "https://heavystinger.github.io/superstar-car-wash-website/assets/hero-car-2.png",
+		"url": "https://heavystinger.github.io/superstar-car-wash-website/",
+		"telephone": "+501-605-1575",
+		"priceRange": "$$",
+		"address": {
+			"@type": "PostalAddress",
+			"streetAddress": "Mile 2, Northern Highway",
+			"addressLocality": "Belize City",
+			"addressCountry": "BZ"
+		},
+		"openingHoursSpecification": {
+			"@type": "OpeningHoursSpecification",
+			"dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday"],
+			"opens": "07:30",
+			"closes": "17:00"
+		}
+	}
+	</script>
+
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800&family=Space+Grotesk:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -19,16 +61,15 @@
 		<div class="logo" translate="no">Super Star <span class="logo-accent">&#9733; CAR WASH</span></div>
 		<nav class="main-nav" id="main-nav">
 			<a class="nav-link active" href="index.html">Home</a>
-			<a class="nav-link" href="services.html">Services</a>
-			<a class="nav-link" href="pricing.html">Packages</a>
+			<a class="nav-link" href="#services">Services</a>
+			<a class="nav-link" href="pricing.html">Pricing</a>
 			<a class="nav-link" href="gallery.html">Gallery</a>
 			<a class="nav-link" href="lounge.html">Bar &amp; Lounge</a>
-			<a class="nav-link" href="about.html">About</a>
 			<a class="nav-link" href="contact.html">Contact</a>
-			<a class="ssw-cta nav-book-btn" href="contact.html">Book Now</a>
+			<a class="ssw-cta nav-book-btn" href="contact.html#booking">Book Now</a>
 		</nav>
 		<div class="header-actions">
-			<a class="ssw-cta header-cta" href="contact.html">Book Now</a>
+			<a class="ssw-cta header-cta" href="contact.html#booking">Book Now</a>
 			<button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="main-nav">
 				<span></span><span></span><span></span>
 			</button>
@@ -44,12 +85,12 @@
 			<div class="bubble-field" id="hero-bubbles" aria-hidden="true"></div>
 
 			<div class="hero-info" id="hero-info">
-				<p class="eyebrow">Belize City's #1 Rated Car Wash</p>
+				<p class="eyebrow">Belize City’s #1 Rated Car Wash</p>
 				<h1 class="h1">Best Car Wash in Belize City</h1>
 				<p class="hero-copy">Hand wash, foam detail, and tire shine that lasts. Book in 30 seconds. Kick back in the bar while your car is being cleaned.</p>
-				<button class="ssw-cta hero-btn" data-scroll-to="booking">Wash My Car <span class="arrow">&rarr;</span></button>
+				<button class="ssw-cta hero-btn" data-scroll-to="booking">Wash My Car <span class="arrow" aria-hidden="true">&rarr;</span></button>
 				<div class="hero-stats">
-					<div class="stat"><div class="stat-value">4.9 <span class="star-gold">&#9733;</span></div><div class="stat-label">312 reviews</div></div>
+					<div class="stat"><div class="stat-value">4.9 <span class="star-gold" aria-hidden="true">&#9733;</span></div><div class="stat-label">312 reviews</div></div>
 					<div class="stat"><div class="stat-value">15 min</div><div class="stat-label">avg. wash time</div></div>
 				</div>
 			</div>
@@ -75,13 +116,13 @@
 			<p class="lede onblue-muted">Four quick steps and your wash is locked in. Pick your ride, pick your grime, we handle the rest.</p>
 
 			<ol class="steps" id="steps">
-				<li class="step" data-step="1"><span class="step-dot"><span class="step-num">1</span><span class="step-check">&#10003;</span></span><span class="step-label">Contact</span></li>
+				<li class="step" data-step="1"><span class="step-dot"><span class="step-num">1</span><span class="step-check" aria-hidden="true">&#10003;</span></span><span class="step-label">Contact</span></li>
 				<div class="step-line"></div>
-				<li class="step" data-step="2"><span class="step-dot"><span class="step-num">2</span><span class="step-check">&#10003;</span></span><span class="step-label">Schedule</span></li>
+				<li class="step" data-step="2"><span class="step-dot"><span class="step-num">2</span><span class="step-check" aria-hidden="true">&#10003;</span></span><span class="step-label">Schedule</span></li>
 				<div class="step-line"></div>
-				<li class="step" data-step="3"><span class="step-dot"><span class="step-num">3</span><span class="step-check">&#10003;</span></span><span class="step-label">Vehicle</span></li>
+				<li class="step" data-step="3"><span class="step-dot"><span class="step-num">3</span><span class="step-check" aria-hidden="true">&#10003;</span></span><span class="step-label">Vehicle</span></li>
 				<div class="step-line"></div>
-				<li class="step" data-step="4"><span class="step-dot"><span class="step-num">4</span><span class="step-check">&#10003;</span></span><span class="step-label">Wash Type</span></li>
+				<li class="step" data-step="4"><span class="step-dot"><span class="step-num">4</span><span class="step-check" aria-hidden="true">&#10003;</span></span><span class="step-label">Wash Type</span></li>
 			</ol>
 
 			<form class="booking-card" id="booking-form" novalidate>
@@ -103,7 +144,7 @@
 						<div class="field">
 							<label class="ssw-label" for="bk-phone">Phone Number</label>
 							<div class="field-row">
-								<select class="ssw-input phone-code" id="bk-phone-code">
+								<select class="ssw-input phone-code" id="bk-phone-code" aria-label="Country code" autocomplete="tel-country-code">
 									<option value="+501">+501 BZ</option>
 									<option value="+502">+502 GT</option>
 									<option value="+503">+503 SV</option>
@@ -175,10 +216,10 @@
 
 						<label class="checkbox-row" id="extra-dirty-row">
 							<input type="checkbox" id="bk-extra-dirty" class="visually-hidden">
-							<span class="checkbox-box"><span class="checkbox-tick">&#10003;</span></span>
+							<span class="checkbox-box"><span class="checkbox-tick" aria-hidden="true">&#10003;</span></span>
 							<span class="checkbox-copy">
 								<span class="checkbox-title">Extra Dirty?</span>
-								<span class="checkbox-sub">Heavy mud or grime &mdash; priced by phone, we'll confirm before your appointment.</span>
+								<span class="checkbox-sub">Heavy mud or grime &mdash; priced by phone, we’ll confirm before your appointment.</span>
 							</span>
 							<span class="checkbox-glyph" aria-hidden="true"></span>
 						</label>
@@ -188,7 +229,7 @@
 
 						<label class="checkbox-row" id="tire-shine-row">
 							<input type="checkbox" id="bk-tire-shine" class="visually-hidden">
-							<span class="checkbox-box"><span class="checkbox-tick">&#10003;</span></span>
+							<span class="checkbox-box"><span class="checkbox-tick" aria-hidden="true">&#10003;</span></span>
 							<span class="checkbox-copy">
 								<span class="checkbox-title">Add Tire Shine</span>
 								<span class="checkbox-sub">Glossy, streak-free finish &mdash; +$10 BZD</span>
@@ -199,8 +240,8 @@
 					<!-- Step 5 : Confirmation -->
 					<div class="booking-panel" data-panel="5">
 						<div class="confirm">
-							<div class="confirm-check">&#10003;</div>
-							<h3 class="card-title">You're Booked!</h3>
+							<div class="confirm-check" aria-hidden="true">&#10003;</div>
+							<h3 class="card-title">You’re Booked!</h3>
 							<p class="confirm-copy" id="confirm-copy" aria-live="polite"></p>
 
 							<div class="confirm-summary" id="confirm-price-summary" hidden>
@@ -211,7 +252,7 @@
 
 							<div class="confirm-summary confirm-call" id="confirm-call-summary" hidden>
 								<span id="confirm-call-line"></span>
-								<a class="ssw-cta-outline" id="confirm-call-link" href="tel:+5016100000">Call +501 610-0000</a>
+								<a class="ssw-cta-outline" id="confirm-call-link" href="tel:+5016051575">Call +501 605-1575</a>
 							</div>
 
 							<button class="ssw-cta" id="bk-reset" style="margin-top:12px;">Book Another Wash</button>
@@ -224,7 +265,7 @@
 					<button type="button" class="btn-ghost" id="bk-back" hidden>Back</button>
 					<div class="footer-spacer"></div>
 					<div class="footer-price" id="footer-price" hidden></div>
-					<a class="ssw-cta-outline footer-call" id="footer-call" hidden href="tel:+5016100000">Call +501 610-0000</a>
+					<a class="ssw-cta-outline footer-call" id="footer-call" hidden href="tel:+5016051575">Call +501 605-1575</a>
 					<button type="button" class="ssw-cta" id="bk-continue">Continue</button>
 				</div>
 			</form>
@@ -233,23 +274,77 @@
 		<!-- ================= FEATURE STRIP ================= -->
 		<section class="feature-strip" id="why-choose-us">
 			<div class="feature-item">
-				<svg width="24" height="24" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="15" fill="none" stroke="#2E8FDB" stroke-width="3"/><line x1="20" y1="20" x2="20" y2="11" stroke="#2E8FDB" stroke-width="3" stroke-linecap="round"/><line x1="20" y1="20" x2="26" y2="22" stroke="#2E8FDB" stroke-width="3" stroke-linecap="round"/></svg>
+				<svg width="24" height="24" viewBox="0 0 40 40" aria-hidden="true"><g transform="translate(4,36) scale(0.033333)" fill="#2E8FDB"><path d="m612-292 56-56-148-148v-184h-80v216l172 172ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-400Zm0 320q133 0 226.5-93.5T800-480q0-133-93.5-226.5T480-800q-133 0-226.5 93.5T160-480q0 133 93.5 226.5T480-160Z"/></g></svg>
 				<span>15&ndash;20 Minute Service</span>
 			</div>
 			<div class="feature-divider"></div>
 			<div class="feature-item">
-				<svg width="24" height="24" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="15" fill="none" stroke="#2E8FDB" stroke-width="3"/><polyline points="13,20 18,25 27,14" fill="none" stroke="#2E8FDB" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+				<svg width="24" height="24" viewBox="0 0 40 40" aria-hidden="true"><g transform="translate(4,36) scale(0.033333)" fill="#2E8FDB"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></g></svg>
 				<span>Clean, consistent results</span>
 			</div>
 			<div class="feature-divider"></div>
 			<div class="feature-item">
-				<svg width="24" height="24" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 4 L24 16 L36 20 L24 24 L20 36 L16 24 L4 20 L16 16 Z" fill="#2E8FDB"/></svg>
+				<svg width="24" height="24" viewBox="0 0 40 40" aria-hidden="true"><g transform="translate(4,36) scale(0.033333)" fill="#2E8FDB"><path d="m760-600-50-110-110-50 110-50 50-110 50 110 110 50-110 50-50 110Zm0 560-50-110-110-50 110-50 50-110 50 110 110 50-110 50-50 110ZM360-160 260-380 40-480l220-100 100-220 100 220 220 100-220 100-100 220Zm0-194 40-86 86-40-86-40-40-86-40 86-86 40 86 40 40 86Zm0-126Z"/></g></svg>
 				<span>Professional finish</span>
 			</div>
 			<div class="feature-divider"></div>
 			<div class="feature-item">
-				<svg width="24" height="24" viewBox="0 0 40 40" aria-hidden="true"><polygon points="9,9 31,9 21.5,25 18.5,25" fill="#2E8FDB"/><line x1="20" y1="25" x2="20" y2="33" stroke="#2E8FDB" stroke-width="3" stroke-linecap="round"/><line x1="13" y1="34" x2="27" y2="34" stroke="#2E8FDB" stroke-width="3" stroke-linecap="round"/></svg>
+				<svg width="24" height="24" viewBox="0 0 40 40" aria-hidden="true"><g transform="translate(4,36) scale(0.033333)" fill="#2E8FDB"><path d="M240-120v-80h200v-200L120-760v-80h720v80L520-400v200h200v80H240Zm58-560h364l72-80H226l72 80Zm182 204 111-124H369l111 124Zm0 0Z"/></g></svg>
 				<span>Lounge &amp; bar access</span>
+			</div>
+		</section>
+
+		<!-- ================= WASH TYPES ================= -->
+		<section class="wash-types" id="services">
+			<p class="eyebrow">Our Services</p>
+			<h2 class="h2">Pick the Level of Clean You Need</h2>
+			<p class="lede muted">Two core washes, sized to fit whatever you drive.</p>
+
+			<div class="type-grid">
+				<div class="type-card">
+					<div class="type-icon" aria-hidden="true">
+						<svg width="30" height="30" viewBox="0 0 40 40"><circle cx="20" cy="20" r="15" fill="none" stroke="#2E8FDB" stroke-width="3"/><g transform="translate(10,30) scale(0.020833)" fill="#2E8FDB"><path d="M491-200q12-1 20.5-9.5T520-230q0-14-9-22.5t-23-7.5q-41 3-87-22.5T343-375q-2-11-10.5-18t-19.5-7q-14 0-23 10.5t-6 24.5q17 91 80 130t127 35Zm-239.5 26Q160-268 160-408q0-100 79.5-217.5T480-880q161 137 240.5 254.5T800-408q0 140-91.5 234T480-80q-137 0-228.5-94ZM652-230.5Q720-301 720-408q0-73-60.5-165T480-774Q361-665 300.5-573T240-408q0 107 68 177.5T480-160q104 0 172-70.5ZM480-480Z"/></g></svg>
+					</div>
+					<h3 class="type-title">Exterior Wash</h3>
+					<p class="type-copy">A thorough hand wash, foam bath, and rinse that leaves the outside spotless, streak-free, and shining.</p>
+				</div>
+				<div class="type-card">
+					<div class="type-icon" aria-hidden="true">
+						<svg width="30" height="30" viewBox="0 0 40 40"><circle cx="20" cy="20" r="15" fill="none" stroke="#2E8FDB" stroke-width="3"/><g transform="translate(10,30) scale(0.020833)" fill="#2E8FDB"><path d="M160-160v-80h110l-16-14q-52-46-73-105t-21-119q0-111 66.5-197.5T400-790v84q-72 26-116 88.5T240-478q0 45 17 87.5t53 78.5l10 10v-98h80v240H160Zm400-10v-84q72-26 116-88.5T720-482q0-45-17-87.5T650-648l-10-10v98h-80v-240h240v80H690l16 14q49 49 71.5 106.5T800-482q0 111-66.5 197.5T560-170Z"/></g></svg>
+					</div>
+					<h3 class="type-title">In &amp; Out Wash</h3>
+					<p class="type-copy">Everything in the Exterior Wash, plus a full interior wipe-down, vacuum, and window clean inside and out.</p>
+				</div>
+			</div>
+
+			<div class="size-note">
+				<span class="size-note-label">Vehicle Size Options</span>
+				<p>Every wash is priced by vehicle size &mdash; from small cars to large SUVs, vans, and trucks.</p>
+				<a class="text-link" href="pricing.html">See Full Pricing &rarr;</a>
+			</div>
+		</section>
+
+		<!-- ================= OUR PROCESS ================= -->
+		<section class="process process-light" id="our-process">
+			<p class="eyebrow">Our Process</p>
+			<h2 class="h2">Three Simple Steps</h2>
+
+			<div class="process-grid">
+				<div class="process-step">
+					<div class="process-num">1</div>
+					<h3 class="process-title">Arrive</h3>
+					<p class="process-copy">Pull in, no appointment needed &mdash; we’ll get you queued up right away.</p>
+				</div>
+				<div class="process-step">
+					<div class="process-num">2</div>
+					<h3 class="process-title">Vehicle Wash</h3>
+					<p class="process-copy">Sit back while our crew hand washes, foams, and details your ride.</p>
+				</div>
+				<div class="process-step">
+					<div class="process-num">3</div>
+					<h3 class="process-title">Relax in Lounge or Pick Up</h3>
+					<p class="process-copy">Grab a drink in the lounge, or head out the moment your car’s ready.</p>
+				</div>
 			</div>
 		</section>
 
@@ -291,8 +386,8 @@
 			<div class="lounge-glow" aria-hidden="true"></div>
 			<p class="eyebrow eyebrow-lounge">Bar &amp; Lounge</p>
 			<h2 class="h2 onblue">Relax While We Clean Your Car</h2>
-			<p class="lede onblue-muted">Grab a drink, kick back, and let us handle the shine. Your car's ready before your glass is empty.</p>
-			<a class="ssw-cta" href="#footer">Visit Our Lounge &rarr;</a>
+			<p class="lede onblue-muted">Grab a drink, kick back, and let us handle the shine. Your car’s ready before your glass is empty.</p>
+			<a class="ssw-cta" href="#footer">Wash my car while I chill &rarr;</a>
 		</section>
 	</main>
 
@@ -310,16 +405,16 @@
 			</div>
 			<div class="footer-col">
 				<div class="footer-heading">Contact</div>
-				<a class="ssw-footer-link" href="tel:+5016100000">+501 610-0000</a>
+				<a class="ssw-footer-link" href="tel:+5016051575">+501 605-1575</a>
 				<a class="ssw-footer-link" href="mailto:hello@superstarcarwash.bz">hello@superstarcarwash.bz</a>
 				<div class="footer-muted">Mile 2, Northern Highway, Belize City</div>
 			</div>
 			<div class="footer-col">
 				<div class="footer-heading">Follow Along</div>
 				<div class="social-pills">
-					<a class="ssw-social-pill" href="#footer">Instagram</a>
+					<a class="ssw-social-pill" href="https://www.instagram.com/superstar_carwash_bze/" target="_blank" rel="noopener noreferrer">Instagram</a>
 					<a class="ssw-social-pill" href="#footer">Facebook</a>
-					<a class="ssw-social-pill" href="#footer">WhatsApp</a>
+					<a class="ssw-social-pill" href="https://wa.me/5016051575?text=I%20am%20messaging%20from%20the%20Superstar%20Car%20Wash%20website." target="_blank" rel="noopener noreferrer">WhatsApp</a>
 				</div>
 				<div class="footer-muted footer-copyright">&copy; <span id="year"></span> Super Star Car Wash. All rights reserved.</div>
 			</div>

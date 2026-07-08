@@ -29,8 +29,8 @@
 		{ id: "inout",   label: "In and Out",   sub: "Interior + exterior detail" }
 	];
 
-	var contactPhone = "+501 610-0000";
-	var contactPhoneHref = "tel:+5016100000";
+	var contactPhone = "+501 605-1575";
+	var contactPhoneHref = "tel:+5016051575";
 
 	var currencyFormatter = new Intl.NumberFormat("en-US", { minimumFractionDigits: 0, maximumFractionDigits: 0 });
 	function money(n) { return currencyFormatter.format(n); }
@@ -189,7 +189,14 @@
 	renderBubbles("section-bubbles-1", sectionBubbles);
 	renderBubbles("section-bubbles-2", sectionBubbles);
 	renderBubbles("section-bubbles-3", sectionBubbles);
-	renderBubbles("intro-bubbles", sectionBubbles);
+	renderBubbles("pricing-intro-bubbles", sectionBubbles);
+	renderBubbles("cta-bubbles", sectionBubbles);
+	renderBubbles("gallery-intro-bubbles", sectionBubbles);
+	renderBubbles("results-bubbles", sectionBubbles);
+	renderBubbles("lounge-hero-bubbles", sectionBubbles);
+	renderBubbles("experience-bubbles", sectionBubbles);
+	renderBubbles("contact-intro-bubbles", sectionBubbles);
+	renderBubbles("contact-hours-bubbles", sectionBubbles);
 
 	/* ============================================================
 	   Hero gradient overlay height (desktop only — matches
@@ -461,7 +468,7 @@
 		}
 
 		function renderConfirmation() {
-			confirmCopy.textContent = "Thanks, " + state.name + " — we'll see your " + vehicleLabel() + " on " + formatSchedule(state.date, state.time) + ".";
+			confirmCopy.textContent = "Thanks, " + state.name + " — we’ll see your " + vehicleLabel() + " on " + formatSchedule(state.date, state.time) + ".";
 			var showPriceOnly = !!state.vehicle && !!state.washType && !isCallForPrice();
 			var showCallCta = !!state.vehicle && !!state.washType && isCallForPrice();
 			confirmPriceSummary.hidden = !showPriceOnly;
@@ -501,7 +508,7 @@
 			if (state.date && !isFutureOrToday(state.date)) {
 				setErrText("date", "Please pick today or a later date.");
 			} else if (state.date && !isBusinessDay(state.date)) {
-				setErrText("date", "We're open Monday–Thursday only — pick another day.");
+				setErrText("date", "We’re open Monday–Thursday only — pick another day.");
 			} else {
 				setErrText("date", "Pick a date");
 			}
@@ -727,7 +734,7 @@
 				drip.style.animationDuration = (7 + (i % 2) * 0.5) + "s";
 				drip.style.animationDelay = "calc(" + i + " * 1.1s)";
 				card.appendChild(drip);
-				card.appendChild(el("div", { class: "review-stars" }, [document.createTextNode("★★★★★")]));
+				card.appendChild(el("div", { class: "review-stars", "aria-hidden": "true" }, [document.createTextNode("★★★★★")]));
 				card.appendChild(el("p", { class: "review-quote" }, [document.createTextNode("“" + t.quote + "”")]));
 				card.appendChild(el("div", { class: "review-name" }, [document.createTextNode(t.name)]));
 				container.appendChild(card);
@@ -735,5 +742,21 @@
 		}
 		buildRow("marquee-row-1", testimonialsRow1);
 		buildRow("marquee-row-2", testimonialsRow2);
+	})();
+
+	/* ============================================================
+	   FAQ accordion (contact.html)
+	   ============================================================ */
+	(function faqAccordion() {
+		var items = document.querySelectorAll(".faq-item");
+		if (!items.length) return;
+		items.forEach(function (item) {
+			var btn = item.querySelector(".faq-question");
+			btn.addEventListener("click", function () {
+				var isOpen = item.classList.contains("is-open");
+				item.classList.toggle("is-open", !isOpen);
+				btn.setAttribute("aria-expanded", String(!isOpen));
+			});
+		});
 	})();
 })();
