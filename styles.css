@@ -790,21 +790,19 @@ section[id], footer[id] { scroll-margin-top: var(--header-h); }
 
 .compare {
 	border-radius: var(--radius); overflow: hidden; box-shadow: 0 10px 30px -16px rgba(23,25,28,.2); background: #fff;
-	transition: box-shadow .2s ease, transform .2s ease;
 }
-.compare:hover { box-shadow: 0 18px 40px -18px rgba(23,25,28,.3); transform: translateY(-3px); }
 .compare-frame { position: relative; height: 220px; overflow: hidden; cursor: ew-resize; user-select: none; }
 .compare-after, .compare-before {
 	position: absolute; inset: 0; background-repeat: no-repeat; background-size: cover;
 }
 .compare-after { background-image: repeating-linear-gradient(135deg, #cfe3f5 0px, #cfe3f5 12px, #ddeefa 12px, #ddeefa 24px); }
-.compare-before { overflow: hidden; background-image: repeating-linear-gradient(135deg, #dfe2e5 0px, #dfe2e5 12px, #e9ebed 12px, #e9ebed 24px); }
+.compare-before { background-image: repeating-linear-gradient(135deg, #dfe2e5 0px, #dfe2e5 12px, #e9ebed 12px, #e9ebed 24px); }
 .compare-tag {
 	position: absolute; top: 12px; background: rgba(23,25,28,.6); color: #fff; font: 600 10.5px var(--font-mono-ish);
 	letter-spacing: .06em; text-transform: uppercase; padding: 5px 10px; border-radius: var(--radius); z-index: 4;
 }
 .compare-tag.before { left: 12px; }
-.compare-tag.after { right: 12px; }
+.compare-tag.after { right: 12px; background: var(--rating-gold); color: var(--ink); }
 .compare-divider { position: absolute; top: 0; bottom: 0; width: 3px; background: #fff; transform: translateX(-50%); z-index: 3; }
 .compare-handle {
 	position: absolute; top: 50%; transform: translate(-50%, -50%); width: 36px; height: 36px; border-radius: 50%;
