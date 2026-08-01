@@ -327,7 +327,7 @@ section[id], footer[id] { scroll-margin-top: var(--header-h); }
 	.hero-info {
 		flex: 1; justify-content: center; padding: 0 0 0 56px; max-width: 520px;
 	}
-	.h1 { font-size: 56px; line-height: 1.03; }
+	.h1 { font-size: 56px; line-height: 1.15; }
 	.hero-copy { margin: 20px 0 32px; }
 	.hero-btn { padding: 16px 26px 16px 40px; font-size: 16px; }
 	.hero-stats { gap: 28px; margin-top: 36px; }
@@ -341,6 +341,16 @@ section[id], footer[id] { scroll-margin-top: var(--header-h); }
 		flex-direction: column;
 		align-items: flex-end;
 	}
+}
+
+/* Wider laptop/desktop screens have more room between the hero copy
+   and the car image (which is positioned by percentage, so its edge
+   moves further right as the viewport grows) — let the heading use
+   that room instead of wrapping into a cramped 4-line stack. Verified
+   safe margin to the car at this breakpoint and up; narrower widths
+   keep the tighter max-width above to avoid crowding it. */
+@media (min-width: 1360px) {
+	.hero-info { max-width: 560px; }
 }
 
 .ready-arrow {
