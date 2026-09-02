@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800&family=Space+Grotesk:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  body { margin: 0; font-family: 'Manrope', sans-serif; background: #f2f0eb; }
+  .ds-sec { padding: 56px 64px; border-bottom: 1px solid rgba(23,25,28,.08); }
+  .ds-kicker { font-family: 'Space Grotesk', sans-serif; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: #2E8FDB; font-size: 13px; margin-bottom: 10px; }
+  .ds-h2 { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 32px; color: #17191c; margin: 0 0 32px; text-transform: uppercase; }
+  .ds-swatch { border-radius: 10px; box-shadow: 0 1px 3px rgba(23,25,28,.08); border: 1px solid rgba(23,25,28,.06); }
+  .ds-input { font-family: 'Manrope', sans-serif; font-size: 15px; padding: 12px 14px; border-radius: 8px; background: #fbfaf8; color: #17191c; width: 100%; box-sizing: border-box; }
+  .ds-label { font: 600 12px 'Manrope', sans-serif; letter-spacing: .04em; text-transform: uppercase; color: #6b6f76; margin-bottom: 8px; display: block; }
+  .ds-btn { font-family: 'Space Grotesk', sans-serif; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; border-radius: 9px; padding: 16px 28px; cursor: pointer; font-size: 15px; }
+</style>
+</helmet>
+
+<div style="background:#fbfaf8; padding:64px 64px 40px; border-bottom:1px solid rgba(23,25,28,.08);">
+  <div class="ds-kicker">Super Star Car Wash</div>
+  <h1 style="font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:44px; color:#17191c; margin:0; text-transform:uppercase;">Design System</h1>
+  <p style="font-family:'Manrope',sans-serif; color:#5a5e64; font-size:16px; max-width:640px; margin:14px 0 0; line-height:1.6;">Color, type, spacing, and component states used across the site — premium, modern, energetic.</p>
+</div>
+
+<div class="ds-sec">
+  <div class="ds-kicker">Foundations</div>
+  <div class="ds-h2">Color</div>
+  <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); gap:24px;">
+
+    <div>
+      <div class="ds-swatch" style="height:80px; background:#2E8FDB;"></div>
+      <div style="margin-top:10px; font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:14px; color:#17191c;">Brand Blue</div>
+      <div style="font-size:12.5px; color:#8a8f97; font-family:monospace;">#2E8FDB</div>
+      <div style="font-size:11.5px; color:#8a8f97;">CTAs, links, accents</div>
+    </div>
+
+    <div>
+      <div class="ds-swatch" style="height:80px; background:#F5B400;"></div>
+      <div style="margin-top:10px; font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:14px; color:#17191c;">Rating Gold</div>
+      <div style="font-size:12.5px; color:#8a8f97; font-family:monospace;">#F5B400</div>
+      <div style="font-size:11.5px; color:#8a8f97;">Star ratings only</div>
+    </div>
+
+    <div>
+      <div class="ds-swatch" style="height:80px; background:#E5484D;"></div>
+      <div style="margin-top:10px; font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:14px; color:#17191c;">Error Red</div>
+      <div style="font-size:12.5px; color:#8a8f97; font-family:monospace;">#E5484D</div>
+      <div style="font-size:11.5px; color:#8a8f97;">Form errors, alerts</div>
+    </div>
+
+    <div>
+      <div class="ds-swatch" style="height:80px; background:#12B886;"></div>
+      <div style="margin-top:10px; font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:14px; color:#17191c;">Success Green</div>
+      <div style="font-size:12.5px; color:#8a8f97; font-family:monospace;">#12B886</div>
+      <div style="font-size:11.5px; color:#8a8f97;">Confirmations</div>
+    </div>
+
+    <div>
+      <div class="ds-swatch" style="height:80px; background:#17191c;"></div>
+      <div style="margin-top:10px; font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:14px; color:#17191c;">Ink</div>
+      <div style="font-size:12.5px; color:#8a8f97; font-family:monospace;">#17191C</div>
+      <div style="font-size:11.5px; color:#8a8f97;">Headings, primary text</div>
+    </div>
+
+    <div>
+      <div class="ds-swatch" style="height:80px; background:#5a5e64;"></div>
+      <div style="margin-top:10px; font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:14px; color:#17191c;">Slate</div>
+      <div style="font-size:12.5px; color:#8a8f97; font-family:monospace;">#5A5E64</div>
+      <div style="font-size:11.5px; color:#8a8f97;">Body copy</div>
+    </div>
+
+    <div>
+      <div class="ds-swatch" style="height:80px; background:#8a8f97;"></div>
+      <div style="margin-top:10px; font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:14px; color:#17191c;">Muted</div>
+      <div style="font-size:12.5px; color:#8a8f97; font-family:monospace;">#8A8F97</div>
+      <div style="font-size:11.5px; color:#8a8f97;">Captions, meta</div>
+    </div>
+
+    <div>
+      <div class="ds-swatch" style="height:80px; background:#dcdcd6;"></div>
+      <div style="margin-top:10px; font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:14px; color:#17191c;">Border</div>
+      <div style="font-size:12.5px; color:#8a8f97; font-family:monospace;">#DCDCD6</div>
+      <div style="font-size:11.5px; color:#8a8f97;">Input borders, rules</div>
+    </div>
+
+    <div>
+      <div class="ds-swatch" style="height:80px; background:#fbfaf8;"></div>
+      <div style="margin-top:10px; font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:14px; color:#17191c;">Surface</div>
+      <div style="font-size:12.5px; color:#8a8f97; font-family:monospace;">#FBFAF8</div>
+      <div style="font-size:11.5px; color:#8a8f97;">Cards, modals, inputs</div>
+    </div>
+
+    <div>
+      <div class="ds-swatch" style="height:80px; background:linear-gradient(180deg,#f2f0eb,#e6e3dc);"></div>
+      <div style="margin-top:10px; font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:14px; color:#17191c;">Page BG</div>
+      <div style="font-size:12.5px; color:#8a8f97; font-family:monospace;">#F2F0EB → #E6E3DC</div>
+      <div style="font-size:11.5px; color:#8a8f97;">Depth gradient, base</div>
+    </div>
+
+  </div>
+</div>
+
+<div class="ds-sec">
+  <div class="ds-kicker">Foundations</div>
+  <div class="ds-h2">Typography</div>
+  <div style="display:flex; flex-direction:column; gap:28px;">
+    <div style="display:flex; align-items:baseline; gap:24px; border-bottom:1px solid rgba(23,25,28,.06); padding-bottom:20px;">
+      <div style="width:140px; font-size:12px; color:#8a8f97; font-family:monospace;">H1 / 56px / 800</div>
+      <div style="font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:56px; text-transform:uppercase; color:#17191c;">Best Car Wash</div>
+    </div>
+    <div style="display:flex; align-items:baseline; gap:24px; border-bottom:1px solid rgba(23,25,28,.06); padding-bottom:20px;">
+      <div style="width:140px; font-size:12px; color:#8a8f97; font-family:monospace;">H2 / 32px / 800</div>
+      <div style="font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:32px; text-transform:uppercase; color:#17191c;">Our Services</div>
+    </div>
+    <div style="display:flex; align-items:baseline; gap:24px; border-bottom:1px solid rgba(23,25,28,.06); padding-bottom:20px;">
+      <div style="width:140px; font-size:12px; color:#8a8f97; font-family:monospace;">Logo / 20px / 700</div>
+      <div style="font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:20px; text-transform:uppercase; color:#17191c;">Super Star Wash</div>
+    </div>
+    <div style="display:flex; align-items:baseline; gap:24px; border-bottom:1px solid rgba(23,25,28,.06); padding-bottom:20px;">
+      <div style="width:140px; font-size:12px; color:#8a8f97; font-family:monospace;">Eyebrow / 14px / 600</div>
+      <div style="font-family:'Space Grotesk',sans-serif; font-weight:600; letter-spacing:.18em; text-transform:uppercase; color:#2E8FDB; font-size:14px;">Belize City's #1 Rated</div>
+    </div>
+    <div style="display:flex; align-items:baseline; gap:24px; border-bottom:1px solid rgba(23,25,28,.06); padding-bottom:20px;">
+      <div style="width:140px; font-size:12px; color:#8a8f97; font-family:monospace;">Stat / 24px / 700</div>
+      <div style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:24px; color:#17191c;">4.9★ 15min</div>
+    </div>
+    <div style="display:flex; align-items:baseline; gap:24px; border-bottom:1px solid rgba(23,25,28,.06); padding-bottom:20px;">
+      <div style="width:140px; font-size:12px; color:#8a8f97; font-family:monospace;">Body Lg / 17px / 500</div>
+      <div style="font-family:'Manrope',sans-serif; font-weight:500; font-size:17px; color:#5a5e64; max-width:520px;">Hand wash, foam detail, and a shine that lasts.</div>
+    </div>
+    <div style="display:flex; align-items:baseline; gap:24px; border-bottom:1px solid rgba(23,25,28,.06); padding-bottom:20px;">
+      <div style="width:140px; font-size:12px; color:#8a8f97; font-family:monospace;">Body / 15px / 400</div>
+      <div style="font-family:'Manrope',sans-serif; font-weight:400; font-size:15px; color:#5a5e64;">Standard paragraph and input text.</div>
+    </div>
+    <div style="display:flex; align-items:baseline; gap:24px;">
+      <div style="width:140px; font-size:12px; color:#8a8f97; font-family:monospace;">Caption / 12.5px / 600</div>
+      <div style="font-family:'Manrope',sans-serif; font-weight:600; font-size:12.5px; color:#8a8f97; text-transform:uppercase; letter-spacing:.04em;">Field label / meta text</div>
+    </div>
+  </div>
+</div>
+
+<div class="ds-sec">
+  <div class="ds-kicker">Foundations</div>
+  <div class="ds-h2">Spacing &amp; Page Padding</div>
+  <div style="display:flex; flex-wrap:wrap; gap:28px; align-items:flex-end; margin-bottom:36px;">
+    <sc-for list="{{ spacingScale }}" as="s" hint-placeholder-count="10">
+      <div style="display:flex; flex-direction:column; align-items:center; gap:8px;">
+        <div style="width:{{ s.px }}px; height:{{ s.px }}px; background:#2E8FDB; border-radius:4px;"></div>
+        <div style="font-family:monospace; font-size:12px; color:#8a8f97;">{{ s.label }}</div>
+      </div>
+    </sc-for>
+  </div>
+  <div style="display:flex; gap:40px; flex-wrap:wrap;">
+    <div style="background:#fbfaf8; border-radius:10px; padding:56px; border:1px dashed #2E8FDB; position:relative;">
+      <div style="position:absolute; top:6px; left:8px; font-family:monospace; font-size:11px; color:#2E8FDB;">56px</div>
+      <div style="background:#eee; width:220px; height:60px; border-radius:6px;"></div>
+      <div style="margin-top:10px; font-size:12.5px; color:#8a8f97;">Hero side padding</div>
+    </div>
+    <div style="background:#fbfaf8; border-radius:10px; padding:28px; border:1px dashed #2E8FDB; position:relative;">
+      <div style="position:absolute; top:6px; left:8px; font-family:monospace; font-size:11px; color:#2E8FDB;">28px</div>
+      <div style="background:#eee; width:220px; height:60px; border-radius:6px;"></div>
+      <div style="margin-top:10px; font-size:12.5px; color:#8a8f97;">Nav vertical padding</div>
+    </div>
+  </div>
+</div>
+
+<div class="ds-sec">
+  <div class="ds-kicker">Components</div>
+  <div class="ds-h2">Buttons</div>
+  <div style="display:flex; flex-wrap:wrap; gap:48px;">
+    <div>
+      <div class="ds-label" style="margin-bottom:14px;">Primary — Idle</div>
+      <button class="ds-btn" style="border:2px solid transparent; color:#fff; background:#2E8FDB; box-shadow:0 3px 10px -4px rgba(46,143,219,.45);">Wash My Car →</button>
+    </div>
+    <div>
+      <div class="ds-label" style="margin-bottom:14px;">Primary — Hover (ghost)</div>
+      <button class="ds-btn" style="border:2px solid #2E8FDB; color:#2E8FDB; background:transparent;">Wash My Car →</button>
+    </div>
+    <div>
+      <div class="ds-label" style="margin-bottom:14px;">Primary — Focus</div>
+      <button class="ds-btn" style="border:2px solid transparent; color:#fff; background:#2E8FDB; box-shadow:0 0 0 4px rgba(46,143,219,.28);">Wash My Car →</button>
+    </div>
+    <div>
+      <div class="ds-label" style="margin-bottom:14px;">Primary — Disabled</div>
+      <button class="ds-btn" style="border:2px solid transparent; color:#a9adb2; background:#e4e2dc; cursor:not-allowed;">Wash My Car →</button>
+    </div>
+    <div>
+      <div class="ds-label" style="margin-bottom:14px;">Secondary — Idle</div>
+      <button class="ds-btn" style="border:2px solid #17191c; color:#17191c; background:transparent;">Learn More</button>
+    </div>
+    <div>
+      <div class="ds-label" style="margin-bottom:14px;">Secondary — Hover</div>
+      <button class="ds-btn" style="border:2px solid #17191c; color:#fff; background:#17191c;">Learn More</button>
+    </div>
+  </div>
+</div>
+
+<div class="ds-sec" style="border-bottom:none;">
+  <div class="ds-kicker">Components</div>
+  <div class="ds-h2">Form Fields</div>
+  <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:32px; max-width:1000px;">
+    <div>
+      <label class="ds-label">Idle</label>
+      <input class="ds-input" style="border:1.5px solid #dcdcd6;" placeholder="Your name"></input>
+    </div>
+    <div>
+      <label class="ds-label">Hover</label>
+      <input class="ds-input" style="border:1.5px solid #b7b7ae;" placeholder="Your name"></input>
+    </div>
+    <div>
+      <label class="ds-label">Focus</label>
+      <input class="ds-input" style="border:1.5px solid #2E8FDB; box-shadow:0 0 0 3px rgba(46,143,219,.18);" placeholder="Your name"></input>
+    </div>
+    <div>
+      <label class="ds-label">Filled</label>
+      <input class="ds-input" style="border:1.5px solid #dcdcd6;" value="Marcus Diaz" readonly=""></input>
+    </div>
+    <div>
+      <label class="ds-label" style="color:#E5484D;">Error</label>
+      <input class="ds-input" style="border:1.5px solid #E5484D; box-shadow:0 0 0 3px rgba(229,72,77,.14);" value="(501)"></input>
+      <div style="font-size:12.5px; color:#E5484D; margin-top:6px; font-family:'Manrope',sans-serif;">Enter a valid phone number</div>
+    </div>
+    <div>
+      <label class="ds-label" style="color:#a9adb2;">Disabled</label>
+      <input class="ds-input" style="border:1.5px solid #e4e2dc; background:#eeece7; color:#a9adb2;" value="Not available" readonly=""></input>
+    </div>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  spacingScale = [
+    { px: 4, label: '4' },
+    { px: 8, label: '8' },
+    { px: 12, label: '12' },
+    { px: 16, label: '16' },
+    { px: 24, label: '24' },
+    { px: 32, label: '32' },
+    { px: 40, label: '40' },
+    { px: 56, label: '56' },
+    { px: 64, label: '64' }
+  ];
+
+  renderVals() {
+    return { spacingScale: this.spacingScale };
+  }
+}
+
+</script>
+</body>
+</html>

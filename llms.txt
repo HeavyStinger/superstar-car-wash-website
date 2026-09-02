@@ -1,0 +1,21 @@
+# Super Star Car Wash
+
+> Hand car wash and detailing service in Belize City, Belize, with an on-site bar and lounge where customers relax while their vehicle is cleaned. Most washes take 10-15 minutes.
+
+Located at Mile 2, Northern Highway, Belize City, Belize. Open Monday-Thursday 7:30am-5:00pm on a walk-in, first-come-first-served basis; Friday and Saturday by appointment only; closed Sunday. Phone/WhatsApp: +501 605-1575. Email: hello@superstarcarwash.bz. Instagram: https://www.instagram.com/superstar_carwash_bze/
+
+## Pages
+
+- [Home](https://heavystinger.github.io/superstar-car-wash-website/): Overview of services, online booking form, a quick pricing preview, and customer testimonials.
+- [Pricing](https://heavystinger.github.io/superstar-car-wash-website/pricing.html): Full price list by vehicle size (Small Car, Small SUV, Large SUV, Larger Vehicles), Outside Only vs. In and Out pricing, and the Tire Shine add-on.
+- [Gallery](https://heavystinger.github.io/superstar-car-wash-website/gallery.html): Before/after photo comparisons, a process video, and vehicle-type coverage.
+- [Bar & Lounge](https://heavystinger.github.io/superstar-car-wash-website/lounge.html): Amenities in the on-site bar/lounge available while customers wait (drinks, seating, AC and TV).
+- [Contact](https://heavystinger.github.io/superstar-car-wash-website/contact.html): Booking form, phone/WhatsApp/email, location and directions, business hours, and FAQ.
+
+## Services
+
+- Exterior Wash (Outside Only): hand wash, foam bath, and rinse.
+- In & Out Wash: everything in the Exterior Wash plus a full interior wipe-down, vacuum, and window clean.
+- Optional Tire Shine add-on (+$10 BZD).
+- Pricing scales by vehicle size - Small Car, Small SUV, Large SUV, and Larger Vehicles; oversized or extra-dirty vehicles are priced by phone.
+- Cash is preferred; cards are accepted where available.
