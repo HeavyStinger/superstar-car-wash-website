@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://heavystinger.github.io/superstar-car-wash-website/sitemap.xml
+Sitemap: https://superstarcarwash.bz/sitemap.xml
